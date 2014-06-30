@@ -1,0 +1,92 @@
+/*---- Buttons ----*/
+.button-bl {
+	font: 14px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	color: #4ea8ce;
+	background: #ffffff;
+	text-align: center;
+	line-height: 25px;
+	min-width: 85px;
+	height: 28px;
+	border: 1px solid #52afd7;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-khtml-border-radius: 4px;
+	cursor: pointer;
+}
+
+.button-bl:hover,active {
+	background: #56b7e2;
+	color: #ffffff;
+}
+
+
+.button-re {
+	font: 14px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	color: #d75252;
+	background: #ffffff;
+	text-align: center;
+	line-height: 25px;
+	min-width: 85px;
+	height: 28px;
+	border: 1px solid #d75252;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-khtml-border-radius: 4px;
+	cursor: pointer;
+}
+
+.button-re:hover,active {
+	background: #e25656;
+	color: #ffffff;
+}
+
+
+
+/*---- Switch ----*/
+.switchOuter {
+	max-width: 122px;
+	height: 23px;
+	background-color: #ffffff;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #5bcef4;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-khtml-border-radius: 4px;
+	cursor: pointer;
+}
+
+.switchInnerB {
+	min-width: 60px;
+	height: 23px;
+	background-color: #5bcef4;
+	float: left;
+}
+
+.switchInner {
+	min-width: 60px;
+	height: 21px;
+	background-color: #ffffff;
+	float: left;
+	margin: 1px 1px 1px;
+}
+
+
+/*---- Contentbox ----*/
+.contentbox {
+	background: #ffffff;
+	min-width: 465px;
+	min-height: 355px;
+	padding: 10px;
+	float: left;
+	-moz-box-shadow: 1px 2px 0 #dfe0e7;
+	-webkit-box-shadow: 1px 2px 0 #dfe0e7;
+	box-shadow: 1px 2px 3px #dfe0e7;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-khtml-border-radius: 4px;
+}
