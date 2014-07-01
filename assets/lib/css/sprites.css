@@ -37,3 +37,22 @@
     background: url('../../media/img/sidebar-icons.png') 0px -191px;
 }
 .ico-settings:hover { background: url('../../media/img/sidebar-icons.png') 16px -191px; }
+
+
+.ico-rselector-magnifier {
+	width: 17px;
+	height: 17px;
+ 	background: url('../../media/img/roomselector-icons.png') 0px 0px;
+}
+
+.ico-rselector-mover {
+	width: 17px;
+	height: 17px;
+ 	background: url('../../media/img/roomselector-icons.png') -31px 0px;
+}
+
+.ico-rselector-mouse {
+	width: 17px;
+	height: 17px;
+ 	background: url('../../media/img/roomselector-icons.png') 17px 0px;
+}

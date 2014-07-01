@@ -83,6 +83,11 @@ body {
 	height: 1px;
 }
 
+.cnt-split-vertical {
+	background: #d8d8d8;
+	width: 1px;
+}
+
 
 /*---- Sidebar ----*/
 .sidebar {

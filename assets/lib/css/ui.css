@@ -42,6 +42,20 @@
 	color: #ffffff;
 }
 
+.button-gr {
+	font: 14px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	background: #ffffff;
+	min-width: 85px;
+	height: 24px;
+	padding: 5px 10px 0 10px;
+	border: 1px solid #cdcdcd;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-khtml-border-radius: 4px;
+}
+
+
 
 /*---- Form Elements ----*/
 .input_def {
@@ -127,12 +141,67 @@ select {
 }
 
 
+
+/*---- Table Style ----*/
+table {
+  color: #333;
+  font-family: sans-serif;
+  font-size: .9em;
+  font-weight: 300;
+  text-align: left;
+  line-height: 40px;
+  border-spacing: 0;
+  border: 1px solid #c5c5c5;
+  width: 100%;
+  margin: 0px auto;
+}
+
+thead tr:first-child {
+  background: #c5c5c5;
+  color: #fff;
+  border: none;
+}
+
+th {font-weight: bold;}
+th:first-child, td:first-child {padding: 0 15px 0 10px;}
+
+thead tr:last-child th {border-bottom: 0px solid #ddd;}
+
+tbody {
+	max-height: 10px;
+}
+tbody tr:hover {background-color: #f4f4f4;}
+tbody tr:last-child td {border: none;}
+tbody td {
+	font-size: 13px;
+	height: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+
+
 /*---- Contentbox ----*/
 .contentbox {
 	background: #ffffff;
 	min-width: 465px;
 	min-height: 355px;
-	padding: 10px;
+	padding: 10px 30px 10px 30px;
+	margin: 0 10px 10px 0;
+	float: left;
+	-moz-box-shadow: 1px 2px 0 #dfe0e7;
+	-webkit-box-shadow: 1px 2px 0 #dfe0e7;
+	box-shadow: 1px 2px 3px #dfe0e7;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-khtml-border-radius: 4px;
+}
+
+.contentbox-large {
+	background: #ffffff;
+	min-width: 960px;
+	min-height: 355px;
+	padding: 10px 30px 10px 30px;
 	margin: 0 10px 10px 0;
 	float: left;
 	-moz-box-shadow: 1px 2px 0 #dfe0e7;
