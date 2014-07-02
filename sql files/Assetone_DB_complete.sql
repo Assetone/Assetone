@@ -30,12 +30,12 @@ USE `Assetone`;
 
 CREATE TABLE IF NOT EXISTS `Benutzer` (
   `B_ID` int(10) NOT NULL AUTO_INCREMENT,
-  `B_Vorname` varchar(24) NOT NULL,
-  `B_Nachname` varchar(24) NOT NULL,
-  `B_email` varchar(24) NOT NULL,
+  `B_Vorname` varchar(255) NOT NULL,
+  `B_Nachname` varchar(255) NOT NULL,
+  `B_email` varchar(254) NOT NULL,
   `Bg_ID` int(10) NOT NULL,
   `B_LastLogin` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `B_Resethash` varchar(192) NOT NULL,
+  `B_Resethash` varchar(40) NOT NULL,
   PRIMARY KEY (`B_ID`),
   KEY `fk_b_bgid` (`Bg_ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
@@ -286,7 +286,7 @@ CREATE TABLE IF NOT EXISTS `Komponentennotizen` (
 
 CREATE TABLE IF NOT EXISTS `Lieferant` (
   `L_ID` int(10) NOT NULL,
-  `L_Name` varchar(24) NOT NULL,
+  `L_Name` varchar(255) NOT NULL,
   PRIMARY KEY (`L_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
