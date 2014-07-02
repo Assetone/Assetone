@@ -3193,9 +3193,9 @@
 		var select = $('<select/>', {
 			'name':          tableId+'_length',
 			'aria-controls': tableId,
-			'class':         classes.sLengthSelect
+			'class':         "select"
 		} );
-	
+		
 		for ( var i=0, ien=lengths.length ; i<ien ; i++ ) {
 			select[0][ i ] = new Option( language[i], lengths[i] );
 		}
@@ -10584,7 +10584,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sFirst": "First",
+				"sFirst": "Anfang",
 	
 	
 				/**
@@ -10607,7 +10607,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sLast": "Last",
+				"sLast": "Ende",
 	
 	
 				/**
@@ -10630,7 +10630,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "Next",
+				"sNext": "Weiter",
 	
 	
 				/**
@@ -10653,7 +10653,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Previous"
+				"sPrevious": "Zurück"
 			},
 	
 			/**
@@ -10676,7 +10676,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sEmptyTable": "No data available in table",
+			"sEmptyTable": "Keine Daten verfügbar in der Tabelle",
 	
 	
 			/**
@@ -10708,7 +10708,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "Ergebnisse _START_ - _END_ von _TOTAL_",
 	
 	
 			/**
@@ -10751,7 +10751,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoFiltered": "(filtered from _MAX_ total entries)",
+			"sInfoFiltered": "(Gefiltert von _MAX_ Einträgen)",
 	
 	
 			/**
@@ -10869,7 +10869,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "Show _MENU_ entries",
+			"sLengthMenu": "Zeige _MENU_ Einträge",
 	
 	
 			/**
@@ -10893,7 +10893,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLoadingRecords": "Loading...",
+			"sLoadingRecords": "Laden...",
 	
 	
 			/**
@@ -10914,7 +10914,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sProcessing": "Processing...",
+			"sProcessing": "Verarbeiten...",
 	
 	
 			/**
@@ -10949,7 +10949,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Search:",
+			"sSearch": "Suche:",
 	
 	
 			/**
@@ -10996,7 +10996,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sZeroRecords": "No matching records found"
+			"sZeroRecords": "Keine Treffer gefunden"
 		},
 	
 	

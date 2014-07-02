@@ -62,6 +62,82 @@
 	    $('#example').dataTable( {
         	"ajax": 'data.txt'
     	} );
+    	
+    	
+    	
+    	// Ajax request
+		$.ajax({
+				type: "POST",
+				url: "ThePHPfileThatDoesNotYetExistBecauseWeAreGoingToFailAtThisProject.php",
+				headers: { "cache-control": "no-cache" },
+					data: {
+							action: add_component
+					},
+				timeout: 6000,
+		})
+
+		// Ajax request failed
+		.error(
+			function(xhr, status, errThrown, data) {
+				console.log("Error: "+ errThrown);
+			}
+
+		)
+		.success(
+			function(data) {
+				
+				// For debugging, log data to the console
+				console.log("ResponseText: "+ data);
+			
+				// Parse received data with jQuery
+				var searchResult = jQuery.parseJSON(data);
+			
+				// Search Count
+				var sr_c = 0;
+			
+				// Create result box
+				function resultBox(searchResult) {
+			
+					// Prepare output of max. 4 items in function
+					for (var sr_c=0; sr_c != 4; sr_c++) {
+						 // HTML part + JS variables
+						 var resultbox =
+									 "<div class='resultbox' style='margin-top: 0px;'>" +
+									 "<div class='rb_left' style='width: 520px; float: left;'>" +
+									 "<p style='font-size: 50px; margin-left: 30px; margin-top: 10px;'>" + searchResult[sr_c].inv + "</p>" +
+									 "<p style='font-size: 30px; margin-left: 30px; margin-top: 10px;'>" + searchResult[sr_c].descr + "</p>" +
+									 "<p style='font-size: 30px; margin-left: 30px; margin-top: 10px;'>User: " + searchResult[sr_c].user + "</p>" +
+									 "</div>" +
+									 "<div class='rb_right' style='width: 120px; float: left;'>" +
+									 "<div class='option_btn info_btn' style='position: absolute; margin-right: 10px; margin-top: 25px;'></div>" +
+									 "<div onClick='prepEdit(this.id)' id='" + searchResult[sr_c].inv + "' class='option_btn edit_btn' style='position: absolute; margin-right: 10px; margin-top: 105px;'></div>" +
+									 "</div>" +
+									 "</div>"
+							
+							// Append each result box to the #searchresults DIV
+							$("#searchresults").append(resultbox);
+							$('.rb_left').addClass('animated fadeIn');
+
+						 }
+				}
+				
+				// Check if result's empty
+				if(data == '[]') {
+					$('#moreResults').html("No more results!<p style='margin-top: 100px;'></p>");	
+				}
+				
+				else {
+				// Result not empty, put in counter, how many results are left
+					$('#moreResults').html("x more results");	
+				}
+				
+				
+				// Call resultBox function to display output
+				resultBox(searchResult);
+				
+			}
+			
+		);
 
 } );
 	</script>
@@ -191,6 +267,17 @@
 					</div>
 					
 
+					<table id="example" class="display" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Bezeichnung</th>
+									<th>Typ</th>
+									<th>Aktionen</th>
+								</tr>
+							</thead>
+					</table>
+
 			
 				</div>
 				
@@ -229,21 +316,6 @@
 				
 				
 				
-<div id="demo">
-
-</div>	
-
-<table id="example" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Bezeichnung</th>
-                <th>Typ</th>
-                <th>Aktionen</th>
-            </tr>
-        </thead>
-
-    </table>
 	
 <script>
 
@@ -400,7 +472,7 @@ $(document).ready(function() {
 					
 					<h5>Standard Select</h5>
 					
-					<select name="speed" id="speed">
+					<select name="speed" class="select">
 						<option>Slower</option>
 						<option>Slow</option>
 						<option selected="selected">Medium</option>
