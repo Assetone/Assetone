@@ -43,16 +43,48 @@
 	width: 17px;
 	height: 17px;
  	background: url('../../media/img/roomselector-icons.png') 0px 0px;
+ 	border: 0 solid;
 }
 
 .ico-rselector-mover {
 	width: 17px;
 	height: 17px;
  	background: url('../../media/img/roomselector-icons.png') -31px 0px;
+ 	border: 0 solid;
 }
 
 .ico-rselector-mouse {
 	width: 17px;
 	height: 17px;
  	background: url('../../media/img/roomselector-icons.png') 17px 0px;
+ 	border: 0 solid;
+}
+
+
+.ico-livesearch-magn {
+	width: 16px;
+	height: 15px;
+ 	background: url('../../media/img/livesearch-icons.png') 0px 0px;
+ 	cursor: pointer;
+}
+
+.ico-livesearch-filter-rooms {
+	width: 16px;
+	height: 15px;
+ 	background: url('../../media/img/livesearch-icons.png') -15px 0px;
+ 	cursor: pointer;
+}
+
+.ico-livesearch-filter-components {
+	width: 14px;
+	height: 15px;
+ 	background: url('../../media/img/livesearch-icons.png') -30px 0px;
+ 	cursor: pointer;
+}
+
+.ico-livesearch-filter-vendors {
+	width: 13px;
+	height: 15px;
+ 	background: url('../../media/img/livesearch-icons.png') -43px 0px;
+ 	cursor: pointer;
 }

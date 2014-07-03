@@ -55,6 +55,25 @@
 	-khtml-border-radius: 4px;
 }
 
+/*---- LiveSearch ----*/
+.livesearch {
+	font: 14px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	background: #ffffff;
+	min-width: 85px;
+	height: 31px;
+	padding: 0px 10px 0 10px;
+	border: 1px solid #cdcdcd;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-khtml-border-radius: 10px;
+	color: #ababab;
+}
+
+.livesearch:focus {
+	color: #7a7a7a;
+}
+
 
 
 /*---- Form Elements ----*/
@@ -231,6 +250,6 @@ tbody td {
 	fill: #fef163;
 }
 
-#floorplans { text-align: center; margin: 50px 0; width: 487px; height: 395px; overflow: hidden; }
+#floorplans { border: 1px solid #c5c5c5; text-align: center; margin: 0px 0; width: 487px; height: 395px; overflow: hidden; }
 .panzoom-parent { border: 2px solid #333; }
 .panzoom-parent .panzoom { border: 2px dashed #666; }

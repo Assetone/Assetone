@@ -82,9 +82,24 @@
 			</div>
 		
 			<div id="header-right" class="fl">
-		
+			
+				<!-- LiveSearch -->
+				<div class="livesearch" style="position: absolute; left: 10px; top: 15px; width: 304px;">
+					<input style="width: 227px; margin-left: -11px; margin-top: -1px;" type="text" id="liveseach-bar" class="livesearch" />
+					<div style="float: right;">
+						<div class="ico-livesearch-magn fl" style="position: absolute; right: 90px; top: 8px;"></div>
+						<div style="margin: -22px 0 0 0;">
+							<div class="ico-livesearch-filter-rooms fl"></div>
+								<p class="fl" style="margin: 0 5px -10px 5px; color: #cdcdcd;">|</p>
+							<div class="ico-livesearch-filter-components fl"></div>
+								<p class="fl" style="margin: 0 5px -10px 5px; color: #cdcdcd;">|</p>
+							<div class="ico-livesearch-filter-vendors fl"></div>
+						</div>
+					</div>
+				</div>
+				
 				<!-- Titel -->
-				<div id="page-title" class="fl" style="width: 50%; text-align: center;">
+				<div id="page-title" class="fl" style="width: 60%; text-align: center;">
 					<p class="greyblue f-def-light" style="font-size: 18.7px;">Titel</p>
 				</div>
 			
@@ -150,13 +165,6 @@
 					<div id="room-sel-left" class="fl" style="width: 54%;">
 
 						<section id="floorplans">
-						
-		  					<div class="buttons">
-								<button class="zoom-in">Zoom In</button>
-								<button class="zoom-out">Zoom Out</button>
-								<input type="range" class="zoom-range">
-								<button class="reset">Reset</button>
-		  					</div>
 
 						<div class="parent">
 							<div class="panzoom">
@@ -184,9 +192,16 @@
 								</svg>
 							</div>
 						</div>
+						
+						<div class="button-gr" style="position: absolute; left: 80px; top: 440px; min-width: 50px; min-height: 10px;">
+							<button class="zoom-in ico-rselector-magnifier fl" style="margin: 0 10px 0 5px; cursor: pointer;"></button>
+							<button class="zoom-out ico-rselector-mover fl" style="margin: 0 10px 0 5px; cursor: pointer;"></button>
+							<div class="reset ico-rselector-mouse fl" style="margin: 0 10px 0 5px; cursor: pointer;"></div>
+							<input style="width: 50px;" type="range" class="zoom-range">
+						</div>
 
 							<!-- Floorplan SVG Elements -->
-							<script>
+							<script type="text/javascript">
 							(function() {
 								var $section = $('section').first();
 									$section.find('.panzoom').panzoom({
@@ -196,18 +211,20 @@
 									$reset: $section.find(".reset")
 								});
 							})();
+
+							$( "#R001" ).click(function() {
+								$("#"+this.id).css({"fill": "#fef163"});
+							});
+							$( "#R002" ).click(function() {
+								$("#"+this.id).css({"fill": "#fef163"});
+							});
 							</script>
 						</section>
 						
-						<div id="room-sel-path" class="button-gr" style="position: absolute; top: 92px; left: 400px; min-width: 50px; min-height: 10px;">
+						<div id="room-sel-path" class="button-gr" style="position: absolute; top: 105px; left: 390px; min-width: 50px; min-height: 10px;">
 							Stockwerk 1 / R002
 						</div>
 						
-						<div class="button-gr" style="position: absolute; top: 460px; min-width: 50px; min-height: 10px;">
-							<div class="zoom-in ico-rselector-magnifier fl" style="margin: 0 10px 0 5px; cursor: pointer;"></div>
-							<div class="zoom-out ico-rselector-mover fl" style="margin: 0 10px 0 5px; cursor: pointer;"></div>
-							<div class="ico-rselector-mouse fl" style="margin: 0 10px 0 5px; cursor: pointer;"></div>
-						</div>
 					</div>
 					
 					<div class="cnt-split-vertical fl" style="height: 400px;"></div>
