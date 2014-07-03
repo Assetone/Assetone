@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IT-Verwaltung</title>
+    <meta name="author" content="B3-Best Team">
+    <link href="assets/lib/css/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/lib/js/jquery-ui-1.11.0/jquery-ui.css">
+    <link rel="stylesheet" href="assets/lib/css/jquery.dataTables.css">
+    <script type="text/javascript" src="assets/lib/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="assets/lib/js/script.js"></script>
+	<script src="assets/lib/js/jquery-ui-1.11.0/jquery-ui.js"></script>
+	<script src="assets/lib/js/jquery.dataTables.js"></script>
+	
+	<script type="text/javascript">
+	var color = $(".ui-state-default").css("#ffffff");
+	
+	$(function() {
+		$( ".select" )
+		.selectmenu({ icons: { button: "sel-defaultIcon" } })
+		.selectmenu({ width: 200 });;
+
+		$.datepicker.setDefaults({
+			showOn: "both",
+			buttonImageOnly: true,
+			buttonImage: "assets/media/img/calendar.png",
+		});
+		
+		
+    $('#field').datepicker({
+          showOn: 'both',
+          buttonImage: 'assets/media/img/calendar.png',
+          buttonImageOnly: true
+    });
+    $('#field').insertAfter( $('#field').next('img') );
+
+
+
+        $.datepicker.regional['de'] = {clearText: 'löschen', clearStatus: 'aktuelles Datum löschen',
+                closeText: 'schließen', closeStatus: 'ohne Änderungen schließen',
+                prevText: '<zurück', prevStatus: 'letzten Monat zeigen',
+                nextText: 'Vor>', nextStatus: 'nächsten Monat zeigen',
+                currentText: 'heute', currentStatus: '',
+                monthNames: ['Januar','Februar','März','April','Mai','Juni',
+                'Juli','August','September','Oktober','November','Dezember'],
+                monthNamesShort: ['Jan','Feb','Mär','Apr','Mai','Jun',
+                'Jul','Aug','Sep','Okt','Nov','Dez'],
+                monthStatus: 'anderen Monat anzeigen', yearStatus: 'anderes Jahr anzeigen',
+                weekHeader: 'Wo', weekStatus: 'Woche des Monats',
+                dayNames: ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
+                dayNamesShort: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+                dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+                dayStatus: 'Setze DD als ersten Wochentag', dateStatus: 'Wähle D, M d',
+                dateFormat: 'dd.mm.yy', firstDay: 1, 
+                initStatus: 'Wähle ein Datum', isRTL: false};
+        $.datepicker.setDefaults($.datepicker.regional['de']);
+		
+		
+		$( ".datepicker" ).datepicker();
+		
+	    $('#example').dataTable( {
+        	"ajax": 'data.txt'
+    	} );
+    	
+    	
+    	
+    	// Ajax request
+		$.ajax({
+				type: "POST",
+				url: "ThePHPfileThatDoesNotYetExistBecauseWeAreGoingToFailAtThisProject.php",
+				headers: { "cache-control": "no-cache" },
+					data: {
+							action: add_component
+					},
+				timeout: 6000,
+		})
+
+		// Ajax request failed
+		.error(
+			function(xhr, status, errThrown, data) {
+				console.log("Error: "+ errThrown);
+			}
+
+		)
+		.success(
+			function(data) {
+				
+				// For debugging, log data to the console
+				console.log("ResponseText: "+ data);
+			
+				// Parse received data with jQuery
+				var searchResult = jQuery.parseJSON(data);
+			
+				// Search Count
+				var sr_c = 0;
+			
+				// Create result box
+				function resultBox(searchResult) {
+			
+					// Prepare output of max. 4 items in function
+					for (var sr_c=0; sr_c != 4; sr_c++) {
+						 // HTML part + JS variables
+						 var resultbox =
+									 "<div class='resultbox' style='margin-top: 0px;'>" +
+									 "<div class='rb_left' style='width: 520px; float: left;'>" +
+									 "<p style='font-size: 50px; margin-left: 30px; margin-top: 10px;'>" + searchResult[sr_c].inv + "</p>" +
+									 "<p style='font-size: 30px; margin-left: 30px; margin-top: 10px;'>" + searchResult[sr_c].descr + "</p>" +
+									 "<p style='font-size: 30px; margin-left: 30px; margin-top: 10px;'>User: " + searchResult[sr_c].user + "</p>" +
+									 "</div>" +
+									 "<div class='rb_right' style='width: 120px; float: left;'>" +
+									 "<div class='option_btn info_btn' style='position: absolute; margin-right: 10px; margin-top: 25px;'></div>" +
+									 "<div onClick='prepEdit(this.id)' id='" + searchResult[sr_c].inv + "' class='option_btn edit_btn' style='position: absolute; margin-right: 10px; margin-top: 105px;'></div>" +
+									 "</div>" +
+									 "</div>"
+							
+							// Append each result box to the #searchresults DIV
+							$("#searchresults").append(resultbox);
+							$('.rb_left').addClass('animated fadeIn');
+
+						 }
+				}
+				
+				// Check if result's empty
+				if(data == '[]') {
+					$('#moreResults').html("No more results!<p style='margin-top: 100px;'></p>");	
+				}
+				
+				else {
+				// Result not empty, put in counter, how many results are left
+					$('#moreResults').html("x more results");	
+				}
+				
+				
+				// Call resultBox function to display output
+				resultBox(searchResult);
+				
+			}
+			
+		);
+
+} );
+	</script>
+
+
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+	<div class="page-main">
+
+
+
+		<div class="header fl">
+			<div id="header-left" class="fl light-blue">
+				<a href="#uebersicht"><img src="assets/media/img/assetone_logo_small.png" alt="IT-Verwaltung" /></a>
+			</div>
+		
+			<div id="header-right" class="fl">
+		
+				<!-- Titel -->
+				<div id="page-title" class="fl" style="width: 50%; text-align: center;">
+					<p class="greyblue f-def-light" style="font-size: 18.7px;">Titel</p>
+				</div>
+			
+				<!-- User Menü -->
+				<div id="user-menu" class="fl" style="width: 30%;">
+					<div id="user-menu-left" class="fl" style="padding: 10px;">
+						<img src="assets/media/img/user.png" alt="PB" />
+					</div>
+					<div id="user-menu-right" class="fl">
+						<p class="f-def-light" style="line-height: 0;">Phillipp Busch</p>
+						<p class="f-def-light" style="font-size: 12px; line-height: 5px;">Systembetreuer</p>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+		
+		<div class="page-body">
+		
+			<div class="sidebar darkblue fl">
+				<ul id="nav-sidebar" class="sidebar-left">
+						<li>
+							<a href="#" class="active">
+								<div class="sidebar-icon ico-overview fl"></div>
+								<span>Übersicht</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="sidebar-icon ico-rooms fl"></div>
+								<span>Räume</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="sidebar-icon ico-components fl"></div>
+								<span>Komponenten</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="sidebar-icon ico-vendors fl"></div>
+								<span>Lieferanten</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="sidebar-icon ico-settings fl"></div>
+								<span>Einstellungen</span>
+							</a>
+						</li>
+				</ul>
+			</div>
+	
+	
+			<div class="content fl">
+			
+			<!-- Räume Start -->
+				<div class="contentbox-large">
+		
+					<h3>Raum Selector</h3>
+
+					<div id="room-sel-left" class="fl" style="width: 54%;">
+						<img src="assets/media/img/floorplan.png" alt="floorplan" />
+						
+						<div id="room-sel-path" class="button-gr" style="position: absolute; top: 92px; left: 400px; min-width: 50px; min-height: 10px;">
+							Stockwerk 1 / R002
+						</div>
+						
+						<div class="button-gr" style="position: absolute; top: 460px; min-width: 50px; min-height: 10px;">
+							<div class="ico-rselector-magnifier fl" style="margin: 0 10px 0 5px; cursor: pointer;"></div>
+							<div class="ico-rselector-mover fl" style="margin: 0 10px 0 5px; cursor: pointer;"></div>
+							<div class="ico-rselector-mouse fl" style="margin: 0 10px 0 5px; cursor: pointer;"></div>
+						</div>
+					</div>
+					
+					<div class="cnt-split-vertical fl" style="height: 400px;"></div>
+					
+					<div id="room-sel-right" class="fl" style="width: 40%; padding: 0 0 0 30px;">
+					
+						<h5>Raum 002</h5>
+						<table>
+					  	  <tbody>
+							<tr>
+						  	   <td style="width: 20%; border-right: 1px solid #ddd;">ID:</td>
+						  	   <td style="padding: 0 0 0 10px;">002</td>
+							</tr>
+							<tr>
+						  	   <td style="width: 20%; border-right: 1px solid #ddd;">Bezeichnung:</td>
+						  	   <td style="padding: 0 0 0 10px;">Labor</td>
+							</tr>
+							<tr>
+						  	   <td style="width: 20%; border-right: 1px solid #ddd;">PCs:</td>
+						  	   <td style="padding: 0 0 0 10px;">20</td>
+							</tr>
+							<tr>
+						  	   <td style="width: 20%; border-right: 1px solid #ddd;">Beamer:</td>
+						  	   <td style="padding: 0 0 0 10px;">Ja</td>
+							</tr>
+					  	  </tbody>
+						</table>
+					
+					</div>
+					
+
+					<table id="example" class="display" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Bezeichnung</th>
+									<th>Typ</th>
+									<th>Aktionen</th>
+								</tr>
+							</thead>
+					</table>
+
+			
+				</div>
+				
+				
+				<script type="text/javascript">
+				/*var response = null;
+
+				function getData(){
+				  if(!response){
+					$.getJSON('data.php', function(data){
+					  response = data;
+					})
+				  }
+
+				  return response;
+				}
+
+				getData();
+
+
+				// convert string to JSON
+				response = $.parseJSON(response);
+
+				$(function() {
+					$.each(response, function(i, item) {
+						var $tr = $('<tr>').append(
+							$('<td>').text(item.ID),
+							$('<td>').text(item.Bezeichnung),
+							$('<td>').text(item.Typ),
+							$('<td>').text(item.Aktionen)
+						).append('</tr>').appendTo('#data_table');
+					});
+				});*/
+				</script>
+				
+				
+				
+				
+	
+<script>
+
+
+/*
+var dataSet = [
+    ['Trident','Internet Explorer 4.0','Win 95+','4','X'],
+    ['Trident','Internet Explorer 5.0','Win 95+','5','C'],
+    ['Trident','Internet Explorer 5.5','Win 95+','5.5','A'],
+    ['Trident','Internet Explorer 6','Win 98+','6','A'],
+    ['Trident','Internet Explorer 7','Win XP SP2+','7','A'],
+    ['Trident','AOL browser (AOL desktop)','Win XP','6','A'],
+    ['Gecko','Firefox 1.0','Win 98+ / OSX.2+','1.7','A'],
+    ['Gecko','Firefox 1.5','Win 98+ / OSX.2+','1.8','A'],
+    ['Gecko','Firefox 2.0','Win 98+ / OSX.2+','1.8','A'],
+    ['Gecko','Firefox 3.0','Win 2k+ / OSX.3+','1.9','A'],
+    ['Gecko','Camino 1.0','OSX.2+','1.8','A'],
+    ['Gecko','Camino 1.5','OSX.3+','1.8','A'],
+    ['Gecko','Netscape 7.2','Win 95+ / Mac OS 8.6-9.2','1.7','A'],
+    ['Gecko','Netscape Browser 8','Win 98SE+','1.7','A'],
+    ['Gecko','Netscape Navigator 9','Win 98+ / OSX.2+','1.8','A'],
+    ['Gecko','Mozilla 1.0','Win 95+ / OSX.1+',1,'A'],
+    ['Gecko','Mozilla 1.1','Win 95+ / OSX.1+',1.1,'A'],
+    ['Gecko','Mozilla 1.2','Win 95+ / OSX.1+',1.2,'A'],
+    ['Gecko','Mozilla 1.3','Win 95+ / OSX.1+',1.3,'A'],
+    ['Gecko','Mozilla 1.4','Win 95+ / OSX.1+',1.4,'A'],
+    ['Gecko','Mozilla 1.5','Win 95+ / OSX.1+',1.5,'A'],
+    ['Gecko','Mozilla 1.6','Win 95+ / OSX.1+',1.6,'A'],
+    ['Gecko','Mozilla 1.7','Win 98+ / OSX.1+',1.7,'A'],
+    ['Gecko','Mozilla 1.8','Win 98+ / OSX.1+',1.8,'A'],
+    ['Gecko','Seamonkey 1.1','Win 98+ / OSX.2+','1.8','A'],
+    ['Gecko','Epiphany 2.20','Gnome','1.8','A'],
+    ['Webkit','Safari 1.2','OSX.3','125.5','A'],
+    ['Webkit','Safari 1.3','OSX.3','312.8','A'],
+    ['Webkit','Safari 2.0','OSX.4+','419.3','A'],
+    ['Webkit','Safari 3.0','OSX.4+','522.1','A'],
+    ['Webkit','OmniWeb 5.5','OSX.4+','420','A'],
+    ['Webkit','iPod Touch / iPhone','iPod','420.1','A'],
+    ['Webkit','S60','S60','413','A'],
+    ['Presto','Opera 7.0','Win 95+ / OSX.1+','-','A'],
+    ['Presto','Opera 7.5','Win 95+ / OSX.2+','-','A'],
+    ['Presto','Opera 8.0','Win 95+ / OSX.2+','-','A'],
+    ['Presto','Opera 8.5','Win 95+ / OSX.2+','-','A'],
+    ['Presto','Opera 9.0','Win 95+ / OSX.3+','-','A'],
+    ['Presto','Opera 9.2','Win 88+ / OSX.3+','-','A'],
+    ['Presto','Opera 9.5','Win 88+ / OSX.3+','-','A'],
+    ['Presto','Opera for Wii','Wii','-','A'],
+    ['Presto','Nokia N800','N800','-','A'],
+    ['Presto','Nintendo DS browser','Nintendo DS','8.5','C/A<sup>1</sup>'],
+    ['KHTML','Konqureror 3.1','KDE 3.1','3.1','C'],
+    ['KHTML','Konqureror 3.3','KDE 3.3','3.3','A'],
+    ['KHTML','Konqureror 3.5','KDE 3.5','3.5','A'],
+    ['Tasman','Internet Explorer 4.5','Mac OS 8-9','-','X'],
+    ['Tasman','Internet Explorer 5.1','Mac OS 7.6-9','1','C'],
+    ['Tasman','Internet Explorer 5.2','Mac OS 8-X','1','C'],
+    ['Misc','NetFront 3.1','Embedded devices','-','C'],
+    ['Misc','NetFront 3.4','Embedded devices','-','A'],
+    ['Misc','Dillo 0.8','Embedded devices','-','X'],
+    ['Misc','Links','Text only','-','X'],
+    ['Misc','Lynx','Text only','-','X'],
+    ['Misc','IE Mobile','Windows Mobile 6','-','C'],
+    ['Misc','PSP browser','PSP','-','C'],
+    ['Other browsers','All others','-','-','U']
+];
+ 
+$(document).ready(function() {
+    $('#demo').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="exxample"></table>' );
+ 
+    $('#exxample').dataTable( {
+        "data": dataSet,
+        "columns": [
+            { "title": "Engine" },
+            { "title": "Browser" },
+            { "title": "Platform" },
+            { "title": "Version", "class": "center" },
+            { "title": "Grade", "class": "center" }
+        ]
+    } );   
+} );
+*/
+</script>
+				
+				
+	
+				<div class="contentbox-large">
+		
+					<h3>Tabellenansicht "Räume"</h3>
+					
+					<p style="font-size: 14px;">
+						Schüler PCs: 6 &nbsp; | &nbsp; Lehrer PCs: 1 &nbsp; | &nbsp; Beamer: Ja
+					</p>
+
+					<table id="data_table">
+					  <thead>
+						<tr>
+						  <th width="10%">ID</th>
+						  <th width="50%">Bezeichnung</th>
+						  <th width="20%">Typ</th>
+						  <th width="20%"">Aktionen</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+						  <td>001</td>
+						  <td>Lenovo E32</td>
+						  <td>Schüler-PC</td>
+						  <td>
+							<a href="#">Bearbeiten</a> | <a href="#" class="button">Löschen</a>
+						  </td>
+						</tr>
+						<tr>
+						  <td>002</td>
+						  <td>Lenovo E32</td>
+						  <td>Schüler-PC</td>
+						  <td>
+							<a href="#">Bearbeiten</a> | <a href="#" class="button">Löschen</a>
+						  </td>
+						</tr>
+						<tr>
+						  <td>003</td>
+						  <td>Lenovo E32</td>
+						  <td>Schüler-PC</td>
+						  <td>
+							<a href="#">Bearbeiten</a> | <a href="#" class="button">Löschen</a>
+						  </td>
+						</tr>
+					  </tbody>
+					</table>
+
+				</div>
+				
+			<!-- Räume Ende -->
+
+				<div class="contentbox">
+		
+					<h3>Form Style</h3>
+					<h5>Standard Input</h5>
+		
+					<input class="input_def" name="lorem_ipsum" value="Lorem Ipsum..." />
+
+
+					<h5>Textbox</h5>
+		
+					<textarea style="width: 300px; height: 100px;" class="input_def">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</textarea>
+
+				</div>
+		
+					<br />
+		
+				<div class="contentbox">
+		
+
+					<form action="#">
+					
+					<h5>Standard Select</h5>
+					
+					<select name="speed" class="select">
+						<option>Slower</option>
+						<option>Slow</option>
+						<option selected="selected">Medium</option>
+						<option>Fast</option>
+						<option>Faster</option>
+					</select>
+
+
+					</form>
+
+
+					<h5>Textbox</h5>
+		
+					<textarea style="width: 300px; height: 100px;" class="input_def">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</textarea>
+
+				</div>
+
+		
+			</div>
+			
+		</div>
+
+		
+		
+	</div>
+	
+</div>
+
+
+<div class="page-footer"></div>
+		
+</body>
+</html>

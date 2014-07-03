@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IT-Verwaltung</title>
+    <meta name="author" content="B3-Best Team">
+    <link href="assets/lib/css/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/lib/js/jquery-ui-1.11.0/jquery-ui.css">
+    <script type="text/javascript" src="assets/lib/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="assets/lib/js/script.js"></script>
+	<script src="assets/lib/js/jquery-ui-1.11.0/jquery-ui.js"></script>
+	
+	<script>
+	var color = $(".ui-state-default").css("#ffffff");
+	
+	$(function() {
+		$( "#speed" )
+		.selectmenu({ icons: { button: "sel-defaultIcon" } })
+		.selectmenu({ width: 200 });;
+	});
+	</script>
+
+
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+	<div class="page-main">
+
+
+
+		<div class="header fl">
+			<div id="header-left" class="fl light-blue">
+				<a href="#uebersicht"><img src="assets/media/img/assetone_logo_small.png" alt="IT-Verwaltung" /></a>
+			</div>
+		
+			<div id="header-right" class="fl">
+		
+				<!-- Titel -->
+				<div id="page-title" class="fl" style="width: 50%; text-align: center;">
+					<p class="greyblue f-def-light" style="font-size: 18.7px;">Titel</p>
+				</div>
+			
+				<!-- User Menü -->
+				<div id="user-menu" class="fl" style="width: 30%;">
+					<div id="user-menu-left" class="fl" style="padding: 10px;">
+						<img src="assets/media/img/user.png" alt="PB" />
+					</div>
+					<div id="user-menu-right" class="fl">
+						<p class="f-def-light" style="line-height: 0;">Phillipp Busch</p>
+						<p class="f-def-light" style="font-size: 12px; line-height: 5px;">Systembetreuer</p>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+		
+		<div class="page-body">
+		
+			<div class="sidebar darkblue fl">
+				<ul id="nav-sidebar" class="sidebar-left">
+						<li>
+							<a href="#" class="active">
+								<div class="sidebar-icon ico-overview fl"></div>
+								<span>Übersicht</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="sidebar-icon ico-rooms fl"></div>
+								<span>Räume</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="sidebar-icon ico-components fl"></div>
+								<span>Komponenten</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="sidebar-icon ico-vendors fl"></div>
+								<span>Lieferanten</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="sidebar-icon ico-settings fl"></div>
+								<span>Einstellungen</span>
+							</a>
+						</li>
+				</ul>
+			</div>
+	
+	
+			<div class="content fl">
+	
+				<div class="contentbox">
+		
+					<h3>Button Style</h3>
+					<h5>Standard Buttons</h5>
+			
+					<input type="submit" value="Bestätigen" class="button-bl" />
+					<input type="submit" value="Abbrechen" class="button-re" />
+
+					<h5>Switch</h5>
+			
+					<div class="switchOuter">
+						<div class="switchInner">
+							ON
+						</div>
+						<div class="switchInnerB">
+							OFF
+						</div>
+					</div>
+			
+				</div>
+		
+				<div class="contentbox">
+		
+					<h3>Form Style</h3>
+					<h5>Standard Input</h5>
+		
+					<input class="input_def" name="lorem_ipsum" value="Lorem Ipsum..." />
+
+
+					<h5>Textbox</h5>
+		
+					<textarea style="width: 300px; height: 100px;" class="input_def">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</textarea>
+
+				</div>
+		
+					<br />
+		
+				<div class="contentbox">
+		
+
+					<form action="#">
+					
+					<h5>Standard Select</h5>
+					
+					<select name="speed" id="speed">
+						<option>Slower</option>
+						<option>Slow</option>
+						<option selected="selected">Medium</option>
+						<option>Fast</option>
+						<option>Faster</option>
+					</select>
+
+
+					</form>
+
+
+					<h5>Textbox</h5>
+		
+					<textarea style="width: 300px; height: 100px;" class="input_def">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</textarea>
+
+				</div>
+
+		
+			</div>
+			
+		</div>
+
+		
+		
+	</div>
+	
+</div>
+
+
+<div class="page-footer"></div>
+		
+</body>
+</html>
