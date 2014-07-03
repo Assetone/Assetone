@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `Benutzergruppen` (
 
 INSERT INTO `Benutzergruppen` (`Bg_ID`, `Bg_Bezeichnung`, `Zugriff_Benutzerverwaltung`, `Zugriff_Neubeschaffung`, `Zugriff_Stammdatenverwaltung`, `Zugriff_Ausmusterung`, `Zugriff_Wartung`, `Zugriff_Bestellung`, `Zugriff_Reporting`) VALUES
 (1, 'Systembetreuer', 1, 1, 1, 1, 1, 1, 1),
-(2, 'Azubis', 2, 1, 1, 1, 1, 2, 1),
+(2, 'Auszubildender', 2, 1, 1, 1, 1, 2, 1),
 (3, 'Lehrer', 2, 2, 2, 2, 2, 2, 1),
 (4, 'Verwaltung', 2, 2, 2, 2, 2, 2, 1);
 
