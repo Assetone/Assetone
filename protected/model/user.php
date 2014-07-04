@@ -13,12 +13,12 @@ class user extends DooSmartModel{
 	
     public $_table = 'Benutzer';
     public $_primarykey = 'B_ID';
-    public $_fields = array('B_ID', 'B_Vorname', 'B_Nachname', 'email', 'Bg_ID', 'B_LastLogin', 'B_Resethash','B_Username','B_Passwort');
+    public $_fields = array('B_ID', 'B_Vorname', 'B_Nachname', 'B_email', 'Bg_ID', 'B_LastLogin', 'B_Resethash','B_Username','B_Passwort');
 	public function getUsers()
 	{
 		$dbconf = Doo::db()->getDefaultDbConfig();
 		$dbname = $dbconf[1];
-		$smt = Doo::db()->query("SELECT * FROM  benutzer ORDER BY  B_ID");
+		$smt = Doo::db()->query("SELECT `B_ID`,`B_Vorname`,`B_Nachname`,`B_email`,`Bg_Bezeichnung`,`B_LastLogin`, 'B_Username' FROM  `Benutzer` left join Benutzergruppen on Benutzer.Bg_ID = Benutzergruppen.Bg_ID");
 		$tables = $smt->fetchAll();
 		
 		return $tables;

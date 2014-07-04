@@ -1,14 +1,7 @@
 <div class="content fl">
-
-		<div class="contentbox">
-
-			<input type="submit" value="Bestätigen" class="button-bl" />
-			<input type="submit" value="Abbrechen" class="button-re" />
-
-			<p><?php echo $data['user']['name']; ?></p>
-			<p><?php echo $data['user']['data']; ?></p>
-			<p>FUNKT</p>
-			<p>FUNKT noch mehr</p>
-		</div>
-
+	<div class="contentbox">
+		<h3>Herzlich Willkommen!</h3>
+		<h5>Hallo <?php echo ($data['user']['name']); ?>,</h5>
+		<h6>Ihr letzter Login im Assetone Verwaltungssystem war am <?php echo upper($data['user']['lastlogin_ddmmyy']); ?> um <?php echo upper($data['user']['lastlogin_hhmm']); ?> Uhr.</h6>
 	</div>
+</div>

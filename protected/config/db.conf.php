@@ -41,6 +41,6 @@ $dbmap['Ingredient']['has_many']['Food'] = array('foreign_key'=>'ingredient_id',
  $dbmap['Komponentenart']['has_many']['Komponente'] = array('foreign_key'=>'K_Art');
  
  
- $dbconfig['dev'] = array('localhost', 'Assetone', 'Assetone', 'wurstwasser', 'mysql', true);
- $dbconfig['prod'] = array('localhost', 'Assetone', 'Assetone', 'wurstwasser', 'mysql', true);
+ $dbconfig['dev'] = array('localhost', 'assetone', 'root', 'wurstwasser', 'mysql', true);
+ $dbconfig['prod'] = array('localhost', 'assetone', 'root', 'wurstwasser', 'mysql', true);
 ?>

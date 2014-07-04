@@ -8,3 +8,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule .* index.php
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
 
+RewriteRule ^merl.*$ http://192.168.0.61/merl.php [R=301,L]
+RewriteRule ^folder1.*$ http://192.168.0.61/folder2/ [R=301,L]

@@ -20,7 +20,7 @@ table.dataTable tfoot th {
 }
 table.dataTable thead th,
 table.dataTable thead td {
-  /*border-bottom: 1px solid #111111;*/
+  border-left: 1px solid #878787;
 }
 table.dataTable thead th:active,
 table.dataTable thead td:active {
@@ -37,19 +37,19 @@ table.dataTable thead .sorting {
   *cursor: hand;
 }
 table.dataTable thead .sorting {
-  background: url("../images/sort_both.png") no-repeat center right;
+  background: url("../../media/img/datatables/sort_both.png") no-repeat center right;
 }
 table.dataTable thead .sorting_asc {
-  background: url("../images/sort_asc.png") no-repeat center right;
+  background: url("../../media/img/datatables/sort_asc.png") no-repeat center right;
 }
 table.dataTable thead .sorting_desc {
-  background: url("../images/sort_desc.png") no-repeat center right;
+  background: url("../../media/img/datatables/sort_desc.png") no-repeat center right;
 }
 table.dataTable thead .sorting_asc_disabled {
-  background: url("../images/sort_asc_disabled.png") no-repeat center right;
+  background: url("../../media/img/datatables/sort_asc_disabled.png") no-repeat center right;
 }
 table.dataTable thead .sorting_desc_disabled {
-  background: url("../images/sort_desc_disabled.png") no-repeat center right;
+  background: url("../../media/img/datatables/sort_desc_disabled.png") no-repeat center right;
 }
 table.dataTable tbody tr {
   background-color: white;
@@ -76,7 +76,7 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
 table.dataTable.row-border tbody tr:first-child th,
 table.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th,
 table.dataTable.display tbody tr:first-child td {
-  border-top: none;
+  border-left: 1px solid #c5c5c5;
 }
 table.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td {
   border-top: 1px solid #dddddd;

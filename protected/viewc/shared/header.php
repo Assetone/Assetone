@@ -8,17 +8,20 @@
     <link rel="stylesheet" href="<?php echo $data['baseurl']; ?>assets/lib/js/jquery-ui-1.11.0/jquery-ui.css">
     <link rel="stylesheet" href="<?php echo $data['baseurl']; ?>assets/lib/css/jquery.dataTables.css">
     <script type="text/javascript" src="<?php echo $data['baseurl']; ?>assets/lib/js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="<?php echo $data['baseurl']; ?>assets/lib/js/script.js"></script>
+    <script type="text/javascript" src="<?php echo $data['baseurl']; ?>assets/lib/js/scripts.js"></script>
     <script src="<?php echo $data['baseurl']; ?>assets/lib/js/jquery-ui-1.11.0/jquery-ui.js"></script>
     <script src="<?php echo $data['baseurl']; ?>assets/lib/js/jquery.dataTables.js"></script>
-
-    <script>
-    var color = $(".ui-state-default").css("#ffffff");
-    
-    $(function() {
-        $( "#speed" )
-        .selectmenu({ icons: { button: "sel-defaultIcon" } })
-        .selectmenu({ width: 200 });;
-    });
-    </script>
+	<?php
+	function curPageURL() {
+		$pageURL = 'http';
+		//if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+		$pageURL .= "://";
+		if ($_SERVER["SERVER_PORT"] != "80") {
+				$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+			} else {
+				$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+			}
+			return $pageURL;
+		}
+	?>
 </head>
