@@ -43,17 +43,27 @@ class DistributorController extends DooController{
 		echo '{"data": ' . json_encode($this->utf8_encode_all($distributor->getDistributors())). '}';
 		    
 	}
-	public function insertDistributors(){
-		
+	public function insertDistributor(){
 		Doo::loadModel('distributor');
+
         $distributor = new distributor;
-		$distributor -> L_Name = $this->params[0];
-		$distributor -> L_Strasse_Nr = $this->params[1];
-		$distributor -> L_Plz = $this->params[2];
-		$distributor -> L_Ort = $this->params[3];
-		$distributor -> L_Telefon = $this->params[4];
-		$distributor -> L_Fax = $this->params[5];
-		$distributor -> L_Mail = $this->params[6];
+		if (isset($this->params[0])) {
+			$distributor -> L_Name = $this->params[0];
+			$distributor -> L_Strasse_Nr = $this->params[1];
+			$distributor -> L_Plz = $this->params[2];
+			$distributor -> L_Ort = $this->params[3];
+			$distributor -> L_Telefon = $this->params[4];
+			$distributor -> L_Fax = $this->params[5];
+			$distributor -> L_Mail = $this->params[6];
+		} else {
+			$distributor -> L_Name = $this->params['L_Name'];
+			$distributor -> L_Strasse_Nr = $this->params['L_Strasse_Nr'];
+			$distributor -> L_Plz = $this->params['L_Plz'];
+			$distributor -> L_Ort = $this->params['L_Ort'];
+			$distributor -> L_Telefon = $this->params['L_Telefon'];
+			$distributor -> L_Fax = $this->params['L_Fax'];
+			$distributor -> L_Mail = $this->params['L_Mail'];
+		}
 		$result = Doo::db()->insert($distributor);
 	}
 	function utf8_encode_all($dat) // -- It returns $dat encoded to UTF8 

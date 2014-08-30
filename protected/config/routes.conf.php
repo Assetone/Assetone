@@ -72,7 +72,7 @@ $route['*']['/components/insertComponents/:K_Name/:K_Art/:K_Einkaufsdatum/:K_Her
 
 $route['*']['/distributor'] = array('DistributorController','index');
 $route['*']['/distributor/getDistributor'] = array('DistributorController','getDistributor');
-$route['*']['/distributor/insertLieferant/:L_Name/:L_Strasse_Nr/:L_Plz/:L_Ort/:L_Telefon/:L_Fax/:L_Mail'] = array('DistributorController','insertDistributor');
+$route['*']['/distributor/insertDistributor/:L_Name/:L_Strasse_Nr/:L_Plz/:L_Ort/:L_Telefon/:L_Fax/:L_Mail'] = array('DistributorController','insertDistributor');
 
 $route['*']['/rooms'] = array('RoomsController','index');
 $route['*']['/rooms/getRoomInfo/:id'] = array('RoomsController','getRoomInfo');

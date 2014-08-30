@@ -1,3 +1,0 @@
-ALTER TABLE `Benutzer`
-ADD `B_Username` VARCHAR( 24 ) NOT NULL ,
-ADD `B_Passwort` VARCHAR( 255 ) NOT NULL 

@@ -53,17 +53,22 @@ function addComponent() {
 }
 
 
-function addDistributors() {
+function addDistributor() {
 
-	var api_url = '/components/insertComponents/' + $('#component-name').val() + '/' + $('#sel-comptype').find('option:selected').attr("name") + '/' + $('#buy-date').val() + '/' + $('#manufacturer').val() + '/' + $('#warranty').val() + '/' + $('#sel-vendor').find('option:selected').attr("name") + '/' + $('#sel-room').find('option:selected').attr("name");
-	alert(api_url);
+	var api_url = '/distributor/insertDistributor/' + $('#company').val()
+		+ '/' + $('#street').val()
+		+ '/' + $('#zip').val()
+		+ '/' + $('#city').val()
+		+ '/' + $('#phone').val()
+		+ '/' + $('#fax').val()
+		+ '/' + $('#email').val();
 	
 	$.ajax({
 	  async: false,
 	  url: api_url,
 	  type: "POST",
 	  success:function(data){
-		loadDataTable();
+		$('#add-comp-result').html('Komponente Erfolgreich hinzugefügt');
 	  },
 	  error:function(){
 		
