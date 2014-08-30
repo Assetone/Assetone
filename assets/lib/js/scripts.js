@@ -29,7 +29,14 @@ function populateSelect(id, api_url, value1, value2) {
 
 function addComponent() {
 
-	var api_url = '/components/insertComponents/' + $('#component-name').val() + '/' + $('#sel-comptype').find('option:selected').attr("name") + '/' + $('#buy-date').val() + '/' + $('#manufacturer').val() + '/' + $('#warranty').val() + '/' + $('#sel-vendor').find('option:selected').attr("name") + '/' + $('#sel-room').find('option:selected').attr("name");
+	var api_url = '/components/insertComponents/' + $('#component-name').val()
+		+ '/' + $('#sel-comptype').find('option:selected').attr("name")
+		+ '/' + $('#buy-date').val()
+		+ '/' + $('#manufacturer').val()
+		+ '/' + $('#warranty').val()
+		+ '/' + $('#sel-vendor').find('option:selected').attr("name")
+		+ '/' + $('#sel-room').find('option:selected').attr("name")
+		+ '/' + $('#amount').val();
 	
 	$.ajax({
 	  async: false,

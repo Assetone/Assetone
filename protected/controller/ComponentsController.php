@@ -61,23 +61,27 @@ class ComponentsController extends DooController{
 		Doo::loadModel('component');
         $component = new component;
         if(isset($this->params[0])) {
-		$component -> K_Name = $this->params[0] ;
-		$component -> K_Art = $this->params[1];
-		$component -> K_Einkaufsdatum = $this->params[2];
-		$component -> K_Hersteller = $this->params[3];
-		$component -> K_Gewaehrleistung = $this->params[4];
-		$component -> L_ID = $this->params[5];
-		$component -> R_ID = $this->params[6];
+			$component -> K_Name = $this->params[0] ;
+			$component -> K_Art = $this->params[1];
+			$component -> K_Einkaufsdatum = $this->params[2];
+			$component -> K_Hersteller = $this->params[3];
+			$component -> K_Gewaehrleistung = $this->params[4];
+			$component -> L_ID = $this->params[5];
+			$component -> R_ID = $this->params[6];
 		} else {
-		$component -> K_Name = $this->params['K_Name'] ;
-		$component -> K_Art = $this->params['K_Art'];
-		$component -> K_Einkaufsdatum = $this->params['K_Einkaufsdatum'];
-		$component -> K_Hersteller = $this->params['K_Hersteller'];
-		$component -> K_Gewaehrleistung = $this->params['K_Gewaehrleistung'];
-		$component -> L_ID = $this->params['L_ID'];
-		$component -> R_ID = $this->params['R_ID'];
+			$component -> K_Name = $this->params['K_Name'] ;
+			$component -> K_Art = $this->params['K_Art'];
+			$component -> K_Einkaufsdatum = $this->params['K_Einkaufsdatum'];
+			$component -> K_Hersteller = $this->params['K_Hersteller'];
+			$component -> K_Gewaehrleistung = $this->params['K_Gewaehrleistung'];
+			$component -> L_ID = $this->params['L_ID'];
+			$component -> R_ID = $this->params['R_ID'];
 		}
-		$result = Doo::db()->insert($component);
+		
+		for ($i = 0; $i < (isset($this->params[0]) ? $this->params[7] : $this->params['_Anzahl']); $i++)
+		{
+			$result = Doo::db()->insert($component);
+		}
 	}
 	
 	public function getRooms(){
