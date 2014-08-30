@@ -4,7 +4,11 @@
 function login_ldap($username,$password)
 {
 	$password = $password;
+<<<<<<< HEAD
 	$ad_username = "KT\\".$username;    	
+=======
+	$ad_username = "DOMAIN\\".$username;    	
+>>>>>>> origin/master
 
 	$basedn = "ou=BLUBB,dc=dom.ain";
 	$server = "xxx.xxx.xxx.xxx";
