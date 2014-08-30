@@ -14,9 +14,9 @@ date_default_timezone_set('Asia/Kuala_Lumpur');
 
 
 //For framework use. Must be defined. Use full absolute paths and end them with '/'      eg. /var/www/project/
-$config['SITE_PATH'] = '/var/www/';
+$config['SITE_PATH'] = $_SERVER['DOCUMENT_ROOT'].'/';
 //$config['PROTECTED_FOLDER'] = 'protected/';
-$config['BASE_PATH'] = '/var/www/dooframework/';
+$config['BASE_PATH'] = $_SERVER['DOCUMENT_ROOT'].'/dooframework/';
 
 //for production mode use 'prod'
 $config['APP_MODE'] = 'dev';

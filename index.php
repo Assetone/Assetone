@@ -1,9 +1,9 @@
 <?php
 error_reporting(-1);
 ini_set('display_errors', 'On');
-include '/var/www/protected/config/common.conf.php';
-include '/var/www/protected/config/routes.conf.php';
-include '/var/www/protected/config/db.conf.php';
+include '/protected/config/common.conf.php';
+include '/protected/config/routes.conf.php';
+include '/protected/config/db.conf.php';
 
 #Just include this for production mode
 //include $config['BASE_PATH'].'deployment/deploy.php';
