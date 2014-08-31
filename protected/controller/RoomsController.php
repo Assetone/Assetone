@@ -34,7 +34,7 @@ class RoomsController extends DooController{
 		$this->data['user']['lastlogin_hhmm'] = $lastLoginTime[0];
 		$this->data['template'] = "rooms/index";
 		
-		$this->render('index', $this->data,true);
+		$this->renderc('index', $this->data,true);
 	}
 	public function getRooms(){
 		Doo::loadModel('room');

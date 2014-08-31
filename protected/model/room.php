@@ -1,4 +1,7 @@
 <?php
+/**
+@TODO: Move Logic to controller; replace query() with find()
+**/
 Doo::loadCore('db/DooSmartModel');
 class room extends DooSmartModel{
     public $R_ID;
