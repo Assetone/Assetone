@@ -100,8 +100,7 @@ function addUser() {
 
 function addRoom() {
 
-	var api_url = '/components/insertComponents/' + $('#component-name').val() + '/' + $('#sel-comptype').find('option:selected').attr("name") + '/' + $('#buy-date').val() + '/' + $('#manufacturer').val() + '/' + $('#warranty').val() + '/' + $('#sel-vendor').find('option:selected').attr("name") + '/' + $('#sel-room').find('option:selected').attr("name");
-	alert(api_url);
+	var api_url = '/rooms/insertRoom/' + $('#name').val();
 	
 	$.ajax({
 	  async: false,
@@ -109,6 +108,7 @@ function addRoom() {
 	  type: "POST",
 	  success:function(data){
 		loadDataTable();
+		$('#add-comp-result').html('Komponente Erfolgreich hinzugefügt');
 	  },
 	  error:function(){
 		

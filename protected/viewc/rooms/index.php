@@ -176,8 +176,6 @@
 					
 					</div>
 					
-
-			
 				</div>
 				<div id="rooms-tablebox" class="contentbox-large" style="display: none;">
 				<script type="text/javascript">
@@ -224,5 +222,14 @@
 			
 			
 			<table id="table-layer" class="display"></table>
+		</div>
+		<div class="contentbox">
+			<h3>Raum hinzufügen</h3>
+			<div id="add-comp-left" class="fl" style="width: 328px">
+				<p>Bezeichnung</p>
+				<input class="input_def" id="name" name="name" value="" />
+				<p><input type="submit" value="Hinzufügen" onClick="addRoom()" class="button-bl" /></p>
+				<p id="add-comp-result"></p>
+			</div>
 		</div>
 	</div>

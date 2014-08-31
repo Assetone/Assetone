@@ -63,7 +63,6 @@ $route['*']['/settings/getUsers'] = array('SettingsController','getUsers');
 
 $route['*']['/components'] = array('ComponentsController','index');
 $route['*']['/components/getComponents'] = array('ComponentsController','getComponents');
-$route['*']['/rooms/getRoomComponents'] = array('RoomsController','getRoomComponents');
 $route['*']['/components/getDistributor/'] = array('ComponentsController','getDistributor');
 $route['*']['/components/getRooms'] = array('ComponentsController','getRooms');
 $route['*']['/components/insertComponentType/:K_Art_Bezeichnung'] = array('ComponentsController','insertComponentType');
@@ -77,6 +76,8 @@ $route['*']['/distributor/insertDistributor/:L_Name/:L_Strasse_Nr/:L_Plz/:L_Ort/
 $route['*']['/rooms'] = array('RoomsController','index');
 $route['*']['/rooms/getRoomInfo/:id'] = array('RoomsController','getRoomInfo');
 $route['*']['/rooms/getRoomComponents/:name'] = array('RoomsController','getRoomComponents');
+$route['*']['/rooms/getRoomComponents'] = array('RoomsController','getRoomComponents');
+$route['*']['/rooms/insertRoom/:name'] = array('RoomsController','insertRoom');
 
 //---------- Delete if not needed ------------
 $admin = array('admin'=>'1234');
