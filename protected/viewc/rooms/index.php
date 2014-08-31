@@ -181,13 +181,13 @@
 				</div>
 				<div id="rooms-tablebox" class="contentbox-large" style="display: none;">
 				<script type="text/javascript">
+					var dataTable = null;
+					
 					function loadDataTable(roomName)
 					{
-						$(document).ready(function() {
-					
-
-							var datable = $('#table-layer').dataTable( {
-
+						if (dataTable == null)
+						{
+							dataTable = $('#table-layer').DataTable( {
 								"ajax": "<?php echo $data['baseurl']; ?>rooms/getRoomComponents/"+roomName,
 
 								"columns": [ {
@@ -213,9 +213,12 @@
 											"data": "K_Hersteller",
 											"title": "Hersteller"
 										}],
-
-							} );					
-						});
+							});
+						}
+						else
+						{
+							dataTable.ajax.url("<?php echo $data['baseurl']; ?>rooms/getRoomComponents/"+roomName).load();
+						}
 					}
 			</script>
 			
