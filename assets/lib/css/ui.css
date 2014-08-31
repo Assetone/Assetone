@@ -169,7 +169,7 @@ table {
   font-size: .9em;
   font-weight: 300;
   text-align: left;
-  line-height: 30px;
+  line-height: 20px;
   border-spacing: 0;
   border: 1px solid #c5c5c5;
   width: 100%;
@@ -179,7 +179,7 @@ thead tr:first-child {
   background: #c5c5c5;
   color: #fff;
   border: none;
-  height: 50px;
+  height: 20px;
 }
 
 th {font-weight: bold;}
