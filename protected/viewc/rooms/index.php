@@ -47,15 +47,16 @@
 									colorCache = $("#" + this.id).css("fill");
 									$("#" + lastSelectedCache.id).css({"fill": colorCache});
 								}
-								lastSelectedCache = this;						
+								lastSelectedCache = this;
 								$("#" + this.id).css({"fill": "#fef163"});
+								$(".currentRoomDisplay").html(this.id);
 								loadDataTable(this.id);
 							});
 							</script>
 						</section>
 						
 						<div id="room-sel-path" class="button-gr" style="position: absolute; top: 105px; left: 390px; min-width: 50px; min-height: 10px;">
-							Stockwerk 1 / R002
+							Stockwerk 1 / <a class="currentRoomDisplay"></a>
 						</div>
 						
 					</div>
