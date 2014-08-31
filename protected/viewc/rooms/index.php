@@ -229,6 +229,7 @@
 				<p>Bezeichnung</p>
 				<input class="input_def" id="name" name="name" value="" />
 				<p><input type="submit" value="Hinzufügen" onClick="addRoom()" class="button-bl" /></p>
+				<p id="add-comp-result"></p>
 			</div>
 		</div>
 	</div>

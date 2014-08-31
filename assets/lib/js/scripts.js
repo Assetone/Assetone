@@ -108,6 +108,7 @@ function addRoom() {
 	  type: "POST",
 	  success:function(data){
 		loadDataTable();
+		$('#add-comp-result').html('Komponente Erfolgreich hinzugefügt');
 	  },
 	  error:function(){
 		
