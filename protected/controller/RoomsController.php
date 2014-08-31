@@ -53,18 +53,17 @@ class RoomsController extends DooController{
 		    
 	}
 	public function getRoomInfo(){
-		
 		Doo::loadModel('room');
         $room = new room;
-		echo '{"data": ' . json_encode($this->utf8_encode_all($room->getRooms($id))). '}';
+		$name = $this->params['id'];
+		echo '{"data": ' . json_encode($this->utf8_encode_all($room->getRooms($name))). '}';
 		    
 	}
 	public function getRoomComponents(){
-		$name = $this->params['name'];
 		Doo::loadModel('component');
         $component = new component;
+		$name = $this->params['name'];
 		echo '{"data": ' . json_encode($this->utf8_encode_all($component->getRoomComponents($name))). '}';
-		    
 	}
 	
 	function utf8_encode_all($dat) // -- It returns $dat encoded to UTF8 
