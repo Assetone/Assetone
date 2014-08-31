@@ -28,27 +28,19 @@ JOIN Komponentenarten ON K_ART = K_ART_ID group by K_Name");
 		return $tables;
 			   
 	}
-	public function getRoomComponents($id)
+	public function getRoomComponents($name)
 	{
-		if(!$id) $id = "'%'";
+		if(!$name) $name = "'%'";
 		$dbconf = Doo::db()->getDefaultDbConfig();
 		$dbname = $dbconf[1];
-		$str = "SELECT `K_ID` , K_Art_Bezeichnung, `K_Name` , `L_Name` , `R_Bezeichnung` , `K_Einkaufsdatum` , `K_Hersteller` , `K_Gewaehrleistung` , COUNT( * ) AS count
-FROM `Komponente`
-JOIN Komponentenarten
-JOIN Lieferant
-JOIN Raum ON Komponente.K_Art = Komponentenarten.K_Art_ID
-AND Komponente.R_ID = Raum.R_ID
-AND Komponente.L_ID = Lieferant.L_ID
-WHERE Komponente.R_ID like ".$id." 
-AND NOT
-EXISTS (
-
-SELECT NULL
-FROM Subkomponenten
-WHERE Sub_Nr = Komponente.K_ID
-)
-GROUP BY `K_Name` , L_Name";
+		$str = "SELECT `K_ID` , K_Art_Bezeichnung, `K_Name` , `L_Name` , `R_Bezeichnung` , `K_Einkaufsdatum` , `K_Hersteller` , `K_Gewaehrleistung` , COUNT( * ) AS count FROM `Komponente`
+						JOIN Komponentenarten
+						JOIN Lieferant
+						JOIN Raum ON Komponente.K_Art = Komponentenarten.K_Art_ID AND Komponente.R_ID = Raum.R_ID AND Komponente.L_ID = Lieferant.L_ID
+						WHERE Raum.R_Bezeichnung = '".$name."' 
+						AND NOT
+							EXISTS (SELECT NULL FROM Subkomponenten WHERE Sub_Nr = Komponente.K_ID)
+						GROUP BY `K_Name` , L_Name";
 		$smt = Doo::db()->query($str);
 		$tables = $smt->fetchAll();
 		

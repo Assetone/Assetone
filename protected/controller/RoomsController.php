@@ -50,10 +50,10 @@ class RoomsController extends DooController{
 		    
 	}
 	public function getRoomComponents(){
-		$id = $this->params['id'];
+		$name = $this->params['name'];
 		Doo::loadModel('component');
         $component = new component;
-		echo '{"data": ' . json_encode($this->utf8_encode_all($component->getRoomComponents($id))). '}';
+		echo '{"data": ' . json_encode($this->utf8_encode_all($component->getRoomComponents($name))). '}';
 		    
 	}
 	

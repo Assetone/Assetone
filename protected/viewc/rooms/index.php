@@ -136,7 +136,8 @@
 							$('rect[id^="R"]' ).click(function() {
 								$('#room-sel-right').fadeIn();
 								$('#rooms-tablebox').slideDown('slow');
-								$("#"+this.id).css({"fill": "#fef163"});
+								$("#" + this.id).css({"fill": "#fef163"});
+								loadDataTable(this.id);
 							});
 							</script>
 						</section>
@@ -151,7 +152,7 @@
 					
 					<div id="room-sel-right" class="fl" style="display: none; width: 40%; padding: 0 0 0 30px;">
 					
-						<h5>Raum 002</h5>
+						<h5>R002</h5>
 						<table>
 					  	  <tbody>
 							<tr>
@@ -180,41 +181,42 @@
 				</div>
 				<div id="rooms-tablebox" class="contentbox-large" style="display: none;">
 				<script type="text/javascript">
-				$(document).ready(function() {
-			
+					function loadDataTable(roomName)
+					{
+						$(document).ready(function() {
+					
 
-					var datable = $('#table-layer').dataTable( {
+							var datable = $('#table-layer').dataTable( {
 
-						"ajax": "<?php echo $data['baseurl']; ?>rooms/getRoomComponents/12",
+								"ajax": "<?php echo $data['baseurl']; ?>rooms/getRoomComponents/"+roomName,
 
-						"columns": [ {
-									"data": "K_ID",
-									"title": "ID"
-								}, {
-									"data": "K_Name",
-									"title": "Bezeichnung" 
-								}, {
-									"data": "K_Art_Bezeichnung",
-									"title": "Art"
-								}, {
-									"data": "count",
-									"title": "Anzahl"
-								} ,{
-									"data": "L_Name",
-									"title": "Lieferant"
-								},{
-									"data": "R_Bezeichnung",
-									"title": "Raum"
-								}
-								,{
-									"data": "K_Hersteller",
-									"title": "Hersteller"
-								}],
+								"columns": [ {
+											"data": "K_ID",
+											"title": "ID"
+										}, {
+											"data": "K_Name",
+											"title": "Bezeichnung" 
+										}, {
+											"data": "K_Art_Bezeichnung",
+											"title": "Art"
+										}, {
+											"data": "count",
+											"title": "Anzahl"
+										} ,{
+											"data": "L_Name",
+											"title": "Lieferant"
+										},{
+											"data": "R_Bezeichnung",
+											"title": "Raum"
+										}
+										,{
+											"data": "K_Hersteller",
+											"title": "Hersteller"
+										}],
 
-					} );
-
-				
-			});
+							} );					
+						});
+					}
 			</script>
 			
 			

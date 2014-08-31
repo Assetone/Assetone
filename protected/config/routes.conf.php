@@ -76,7 +76,7 @@ $route['*']['/distributor/insertDistributor/:L_Name/:L_Strasse_Nr/:L_Plz/:L_Ort/
 
 $route['*']['/rooms'] = array('RoomsController','index');
 $route['*']['/rooms/getRoomInfo/:id'] = array('RoomsController','getRoomInfo');
-$route['*']['/rooms/getRoomComponents/:id'] = array('RoomsController','getRoomComponents');
+$route['*']['/rooms/getRoomComponents/:name'] = array('RoomsController','getRoomComponents');
 
 //---------- Delete if not needed ------------
 $admin = array('admin'=>'1234');
