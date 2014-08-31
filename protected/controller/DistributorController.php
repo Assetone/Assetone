@@ -5,10 +5,13 @@
  *
  * @author darkredz
  */
-class DistributorController extends DooController{
+Doo::loadController('AuthController');
+
+class DistributorController extends AuthController{
 
     public function index(){
-
+		if($rs = $this->auth()) return $rs;
+		
 		Doo::loadClass('class.userMgmt');
 		$userMgmt = new userMgmt();
 

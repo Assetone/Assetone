@@ -81,7 +81,9 @@ $route['*']['/rooms/getRoomComponents/:name'] = array('RoomsController','getRoom
 $route['*']['/rooms/getRoomComponents'] = array('RoomsController','getRoomComponents');
 $route['*']['/rooms/insertRoom/:name'] = array('RoomsController','insertRoom');
 
-$route['*']['/login/:user/:pass'] = array('AuthController','login');
+$route['POST']['/login/:user/:pass'] = array('AuthController','login');
+$route['*']['/login'] = array('AuthController','login');
+
 
 
 /**

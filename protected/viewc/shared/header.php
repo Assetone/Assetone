@@ -1,3 +1,8 @@
+<?php
+// print_r($data);
+// die('und weg');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

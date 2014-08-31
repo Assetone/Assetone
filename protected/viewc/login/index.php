@@ -1,14 +1,14 @@
 <?php
-	if(isset($_POST["btnLogin"])) {
-		Doo::loadClass('class.userMgmt');
+	// if(isset($_POST["btnLogin"])) {
+		// Doo::loadClass('class.userMgmt');
 
-		$userMgmt = new userMgmt();
-		if($userMgmt->login($_POST["inputUsername"], $_POST["inputPassword"])) {
-			header("Location: rooms/");
-		} else {
-			header("Location: index.php");
-		}
-	}
+		// $userMgmt = new userMgmt();
+		// if($userMgmt->login($_POST["inputUsername"], $_POST["inputPassword"])) {
+			// header("Location: rooms/");
+		// } else {
+			// header("Location: index.php");
+		// }
+	// }
 ?>
 <div class="content fl">
 	<div class="contentbox">
