@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo $data['baseurl']; ?>assets/lib/css/jquery.dataTables.css">
     <script type="text/javascript" src="<?php echo $data['baseurl']; ?>assets/lib/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="<?php echo $data['baseurl']; ?>assets/lib/js/scripts.js"></script>
+    <script type="text/javascript" src="<?php echo $data['baseurl']; ?>assets/lib/js/livesearch.js"></script>
     <script src="<?php echo $data['baseurl']; ?>assets/lib/js/jquery-ui-1.11.0/jquery-ui.js"></script>
     <script src="<?php echo $data['baseurl']; ?>assets/lib/js/jquery.dataTables.js"></script>
 	<?php
