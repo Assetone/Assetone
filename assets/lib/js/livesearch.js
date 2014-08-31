@@ -43,7 +43,7 @@ $(document).ready(function() {
 		  // Define Ajax parameters
 		  $.ajax({
 			 type: "POST",
-			 url: "modules/search.php",
+			 url: "link-with-search-results",
 			 data: { searchInput: searchInput, type: "sbar", limit: "7" },
 			 success: function(result) {
 			   $("#searchbar_res").html(result);
