@@ -17,6 +17,10 @@ class ErrorController extends DooController{
 Also check out the links page for a list of URLs available in this demo.</p>';
     }
 	
+	public function login(){
+		echo 'Error login';
+	}
+	
 
 }
 ?>

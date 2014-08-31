@@ -53,9 +53,11 @@
  * $route['autoroute_force_dash'] = true;	//setting this to false or not defining it will keep auto routes accessible with the 2 URLs.
  *
  */
-//$route['autoroute_force_dash'] = true;
+// $route['autoroute_force_dash'] = true;
 $route['*']['/'] = array('MainController', 'index');
+$route['*']['/err/login'] = array('ErrorController','login');
 $route['*']['/error'] = array('ErrorController', 'index');
+
 $route['*']['/rooms'] = array('RoomsController','index');
 
 $route['*']['/settings'] = array('SettingsController','index');
@@ -77,6 +79,14 @@ $route['*']['/distributor/insertDistributor/:L_Name/:L_Strasse_Nr/:L_Plz/:L_Ort/
 $route['*']['/rooms'] = array('RoomsController','index');
 $route['*']['/rooms/getRoomInfo/:id'] = array('RoomsController','getRoomInfo');
 $route['*']['/rooms/getRoomComponents/:name'] = array('RoomsController','getRoomComponents');
+
+$route['*']['/login/:user/:pass'] = array('AuthController','login');
+
+
+/**
+@TODO: remember how this should work
+$route['*']['/classinfo'] = array('ClassInfoController',
+**/
 
 //---------- Delete if not needed ------------
 $admin = array('admin'=>'1234');

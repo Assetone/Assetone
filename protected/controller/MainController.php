@@ -1,16 +1,21 @@
 <?php
-	if(!isset($_SESSION)) {
-		session_start();
-	}
+// need to import the controller class first.
+Doo::loadController('AuthController');
+
 /**
  * MainController
  * Feel free to delete the methods and replace them with your own code.
  *
  * @author darkredz
  */
-class MainController extends DooController{
+class MainController extends AuthController {
+
 
 	public function index(){
+		if($rs = $this->auth()) {
+			return $rs;
+		}
+	
 		Doo::loadClass('class.userMgmt');
 		$userMgmt = new userMgmt();
 

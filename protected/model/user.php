@@ -9,11 +9,20 @@ class user extends DooSmartModel{
 	public $B_LastLogin;
 	public $B_Resethash;
 	public $B_Username;
-	private $B_Passwort;
+	public $B_Passwort;
 	
     public $_table = 'Benutzer';
     public $_primarykey = 'B_ID';
     public $_fields = array('B_ID', 'B_Vorname', 'B_Nachname', 'B_email', 'Bg_ID', 'B_LastLogin', 'B_Resethash','B_Username','B_Passwort');
+	
+	function __construct(){
+		parent::$className = __CLASS__;
+	}
+
+
+/** This is logic and belongs in the controller
+ *  query should be replaced with find()
+ 
 	public function getUsers()
 	{
 		$dbconf = Doo::db()->getDefaultDbConfig();
@@ -24,7 +33,7 @@ class user extends DooSmartModel{
 		return $tables;
 			   
 	}
-	
+**/	
 	
 	
 }

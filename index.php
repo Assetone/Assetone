@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(-1);
 ini_set('display_errors', 'On');
 include './protected/config/common.conf.php';
@@ -11,7 +12,7 @@ include $config['BASE_PATH'].'Doo.php';
 include $config['BASE_PATH'].'app/DooConfig.php';
 
 # Uncomment for auto loading the framework classes.
-//spl_autoload_register('Doo::autoload');
+spl_autoload_register('Doo::autoload');
 
 Doo::conf()->set($config);
 
