@@ -22,12 +22,11 @@ FROM  Raum ");
 		return $tables;
 			   
 	}
-	public function getRoomInfo($id)
+	public function getRoomInfo($name)
 	{
 		$dbconf = Doo::db()->getDefaultDbConfig();
 		$dbname = $dbconf[1];
-		$smt = Doo::db()->query("SELECT  * 
-FROM  Raum WHERE R_ID =".$id);
+		$smt = Doo::db()->query("SELECT * FROM Raum WHERE R_Bezeichnung =".$name);
 		$tables = $smt->fetchAll();
 		
 		return $tables;

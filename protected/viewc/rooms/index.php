@@ -64,72 +64,75 @@
 					<div class="cnt-split-vertical fl" style="height: 400px;"></div>
 					
 					<div id="room-sel-right" class="fl" style="display: none; width: 40%; padding: 0 0 0 30px;">
-					
+						
 						<h5 class="currentRoomDisplay"></h5>
-						<table>
-					  	  <tbody>
-							<tr>
-						  	   <td style="width: 20%; border-right: 1px solid #ddd;">Bezeichnung:</td>
-						  	   <td style="padding: 0 0 0 10px;">Labor</td>
-							</tr>
-							<tr>
-						  	   <td style="width: 20%; border-right: 1px solid #ddd;">PCs:</td>
-						  	   <td style="padding: 0 0 0 10px;">11</td>
-							</tr>
-							<tr>
-						  	   <td style="width: 20%; border-right: 1px solid #ddd;">Beamer:</td>
-						  	   <td style="padding: 0 0 0 10px;">Ja</td>
-							</tr>
-					  	  </tbody>
-						</table>
+						<table id="roomInfoTable"></table>
 					
 					</div>
 					
 				</div>
 				<div id="rooms-tablebox" class="contentbox-large" style="display: none;">
-				<script type="text/javascript">
-					var dataTable = null;
-					
-					function loadDataTable(roomName)
-					{
-						if (dataTable == null)
+					<script type="text/javascript">
+						var componentsDataTable = null;
+						var roomInformationDataTable = null;
+						
+						function loadDataTable(roomName)
 						{
-							dataTable = $('#table-layer').DataTable( {
-								"ajax": "<?php echo $data['baseurl']; ?>rooms/getRoomComponents/"+roomName,
+							if (componentsDataTable == null)
+							{
+								componentsDataTable = $('#table-layer').DataTable( {
+									"ajax": "<?php echo $data['baseurl']; ?>rooms/getRoomComponents/"+roomName,
 
-								"columns": [ {
-											"data": "K_ID",
-											"title": "ID"
-										}, {
-											"data": "K_Name",
-											"title": "Bezeichnung" 
-										}, {
-											"data": "K_Art_Bezeichnung",
-											"title": "Art"
-										}, {
-											"data": "count",
-											"title": "Anzahl"
-										} ,{
-											"data": "L_Name",
-											"title": "Lieferant"
-										},{
-											"data": "R_Bezeichnung",
-											"title": "Raum"
-										}
-										,{
-											"data": "K_Hersteller",
-											"title": "Hersteller"
-										}],
-							});
+									"columns": [ {
+												"data": "K_ID",
+												"title": "ID"
+											},{
+												"data": "K_Name",
+												"title": "Bezeichnung" 
+											},{
+												"data": "K_Art_Bezeichnung",
+												"title": "Art"
+											},{
+												"data": "count",
+												"title": "Anzahl"
+											},{
+												"data": "L_Name",
+												"title": "Lieferant"
+											},{
+												"data": "R_Bezeichnung",
+												"title": "Raum"
+											},{
+												"data": "K_Hersteller",
+												"title": "Hersteller"
+											}],
+								});
+							}
+							else
+							{
+								componentsDataTable.ajax.url("<?php echo $data['baseurl']; ?>rooms/getRoomComponents/"+roomName).load();
+							}
+							
+							if (roomInformationDataTable == null)
+							{
+								var api_url = '/rooms/getRoomInfo/' + roomName;
+							
+								$.ajax({
+								  async: false,
+								  url: api_url,
+								  type:'JSON',
+								  success:function(data){
+									alert(data);
+								  },
+								  error:function(){
+								  }
+								});
+							}
+							else
+							{
+								roomInformationDataTable.ajax.url("<?php echo $data['baseurl']; ?>rooms/getRoomInfo/"+roomName).load();
+							}
 						}
-						else
-						{
-							dataTable.ajax.url("<?php echo $data['baseurl']; ?>rooms/getRoomComponents/"+roomName).load();
-						}
-					}
-			</script>
-			
-			
+				</script>			
 			<table id="table-layer" class="display"></table>
 		</div>
 		<div class="contentbox">
