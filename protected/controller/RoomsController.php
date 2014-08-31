@@ -36,6 +36,16 @@ class RoomsController extends DooController{
 		
 		$this->render('index', $this->data,true);
 	}
+	
+	public function insertRoom(){
+		Doo::loadModel("room");
+		$room = new room;
+		
+		$room->R_Bezeichnung = $this->params['name'];
+		
+		Doo::db()->insert($room);
+	}
+	
 	public function getRooms(){
 		Doo::loadModel('room');
         $room = new room;
