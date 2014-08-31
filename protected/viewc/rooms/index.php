@@ -65,13 +65,9 @@
 					
 					<div id="room-sel-right" class="fl" style="display: none; width: 40%; padding: 0 0 0 30px;">
 					
-						<h5>R002</h5>
+						<h5 class="currentRoomDisplay"></h5>
 						<table>
 					  	  <tbody>
-							<tr>
-						  	   <td style="width: 20%; border-right: 1px solid #ddd;">ID:</td>
-						  	   <td style="padding: 0 0 0 10px;">002</td>
-							</tr>
 							<tr>
 						  	   <td style="width: 20%; border-right: 1px solid #ddd;">Bezeichnung:</td>
 						  	   <td style="padding: 0 0 0 10px;">Labor</td>
