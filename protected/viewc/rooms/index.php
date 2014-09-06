@@ -66,7 +66,7 @@
 					<div id="room-sel-right" class="fl" style="display: none; width: 40%; padding: 0 0 0 30px;">
 						
 						<h5 class="currentRoomDisplay"></h5>
-						<table id="roomInfoTable"></table>
+						<table id="roomInfoTable">Laden...</table>
 					
 					</div>
 					
@@ -74,7 +74,6 @@
 				<div id="rooms-tablebox" class="contentbox-large" style="display: none;">
 					<script type="text/javascript">
 						var componentsDataTable = null;
-						var roomInformationDataTable = null;
 						
 						function loadDataTable(roomName)
 						{
@@ -106,30 +105,15 @@
 												"title": "Hersteller"
 											}],
 								});
+								
+								$('#table-layer').on('xhr.dt', function ( e, settings, json ) {
+									
+								});
+								
 							}
 							else
 							{
 								componentsDataTable.ajax.url("<?php echo $data['baseurl']; ?>rooms/getRoomComponents/"+roomName).load();
-							}
-							
-							if (roomInformationDataTable == null)
-							{
-								var api_url = '/rooms/getRoomInfo/' + roomName;
-							
-								$.ajax({
-								  async: false,
-								  url: api_url,
-								  type:'JSON',
-								  success:function(data){
-									alert(data);
-								  },
-								  error:function(){
-								  }
-								});
-							}
-							else
-							{
-								roomInformationDataTable.ajax.url("<?php echo $data['baseurl']; ?>rooms/getRoomInfo/"+roomName).load();
 							}
 						}
 				</script>			
