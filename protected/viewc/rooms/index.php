@@ -1,26 +1,21 @@
 <div class="content fl">
-
-		
-		<div class="contentbox-large">
-		
+		<div class="contentbox-large">		
 					<h3>Raum Selector</h3>
-
+					
 					<div id="room-sel-left" class="fl" style="width: 54%;">
-
 						<section id="floorplans">
-
-						<div class="parent" style="overflow: hidden; position: relative;">
-							<div id="svgFloorplan" class="panzoom" style="-webkit-transform: matrix(1, 0, 0, 1, 0, 0); -webkit-backface-visibility: hidden; -webkit-transform-origin: 50% 50%; cursor: move; transition: -webkit-transform 200ms ease-in-out; -webkit-transition: -webkit-transform 200ms ease-in-out;">
-								<?php include("assets/media/img/floorplan.svg"); ?>
+							<div class="parent" style="overflow: hidden; position: relative;">
+								<div id="svgFloorplan" class="panzoom" style="-webkit-transform: matrix(1, 0, 0, 1, 0, 0); -webkit-backface-visibility: hidden; -webkit-transform-origin: 50% 50%; cursor: move; transition: -webkit-transform 200ms ease-in-out; -webkit-transition: -webkit-transform 200ms ease-in-out;">
+									<?php include("assets/media/img/floorplan.svg"); ?>
+								</div>
 							</div>
-						</div>
-						
-						<div class="button-gr" style="position: absolute; left: 80px; top: 440px; min-width: 50px; min-height: 10px;">
-							<button class="zoom-in ico-rselector-magnifier fl" style="margin: 0 10px 0 5px; cursor: pointer;"></button>
-							<button class="zoom-out ico-rselector-mover fl" style="margin: 0 10px 0 5px; cursor: pointer;"></button>
-							<div class="reset ico-rselector-mouse fl" style="margin: 0 10px 0 5px; cursor: pointer;"></div>
-							<input style="width: 50px;" type="range" class="zoom-range" step="0.05" min="0.4" max="5">
-						</div>
+							
+							<div class="button-gr" style="position: absolute; left: 80px; top: 440px; min-width: 50px; min-height: 10px;">
+								<button class="zoom-in ico-rselector-magnifier fl" style="margin: 0 10px 0 5px; cursor: pointer;"></button>
+								<button class="zoom-out ico-rselector-mover fl" style="margin: 0 10px 0 5px; cursor: pointer;"></button>
+								<div class="reset ico-rselector-mouse fl" style="margin: 0 10px 0 5px; cursor: pointer;"></div>
+								<input style="width: 50px;" type="range" class="zoom-range" step="0.05" min="0.4" max="5">
+							</div>
 
 							<!-- Floorplan SVG Elements -->
 							<script src="<?php echo $data['baseurl']; ?>assets/lib/js/jquery.mousewheel.js"></script>
@@ -58,16 +53,13 @@
 						<div id="room-sel-path" class="button-gr" style="position: absolute; top: 105px; left: 390px; min-width: 50px; min-height: 10px;">
 							Stockwerk 1 / <a class="currentRoomDisplay"></a>
 						</div>
-						
 					</div>
 					
 					<div class="cnt-split-vertical fl" style="height: 400px;"></div>
 					
 					<div id="room-sel-right" class="fl" style="display: none; width: 40%; padding: 0 0 0 30px;">
-						
 						<h5 class="currentRoomDisplay"></h5>
-						<table id="roomInfoTable">Laden...</table>
-					
+						<table id="roomInfoTable"></table>
 					</div>
 					
 				</div>
@@ -107,7 +99,29 @@
 								});
 								
 								$('#table-layer').on('xhr.dt', function ( e, settings, json ) {
+									// Get all componenttypes
+									var componenttypes = [];
 									
+									for (var i in json.data)
+									{
+										if (componenttypes[json.data[i].K_Art_Bezeichnung] > 0)
+										{
+											componenttypes[json.data[i].K_Art_Bezeichnung]++;
+										}
+										else
+										{
+											componenttypes[json.data[i].K_Art_Bezeichnung]=1;
+										}
+									}
+									
+									var tableResult = "";
+									
+									for (var i in componenttypes)
+									{
+										tableResult += "<tr><td>" + i + "</td><td>" + componenttypes[i] + "</td></tr>";
+									}
+									
+									$("#roomInfoTable").html(tableResult);
 								});
 								
 							}

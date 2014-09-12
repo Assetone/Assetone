@@ -52,13 +52,6 @@ class RoomsController extends DooController{
 		echo '{"data": ' . json_encode($this->utf8_encode_all($room->getRooms())). '}';
 		    
 	}
-	public function getRoomInfo(){
-		Doo::loadModel('room');
-        $room = new room;
-		$name = $this->params['id'];
-		echo '{"data": ' . json_encode($this->utf8_encode_all($room->getRooms($name))). '}';
-		    
-	}
 	public function getRoomComponents(){
 		Doo::loadModel('component');
         $component = new component;
