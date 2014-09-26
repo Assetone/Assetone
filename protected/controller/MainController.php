@@ -12,9 +12,7 @@ class MainController extends AuthController {
 
 
 	public function index(){
-		if($rs = $this->auth()) {
-			return $rs;
-		}
+		if($rs = $this->auth()) return $rs;
 	
 		Doo::loadClass('class.userMgmt');
 		$userMgmt = new userMgmt();
