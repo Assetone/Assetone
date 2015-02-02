@@ -10,6 +10,9 @@
 			{
 				switch($_GET["action"])
 				{
+					case "setup":
+						include ("view/setup.html");
+						break;
 					default:
 				}
 			}
