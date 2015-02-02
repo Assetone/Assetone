@@ -22,13 +22,26 @@
 		posting.done(function(data){
 			if(data == "successfull"){
 				$("#importProcessDialog").html("Einspielen erfolgreich!");
+				importProcessDialog.dialog("option", "buttons", [{
+					text: "Fertig",
+					click: function() {
+						window.location.search = "";
+					}
+				}]);
 			}else{
 				$("#importProcessDialog").html("Einspielen fehlgeschlagen!");
+				importProcessDialog.dialog("option", "buttons", [{
+					text: "Fertig",
+					click: function() {
+						$(this).dialog("close");
+					}
+				}]);
 			}
 		})
 	});
 	
 	importProcessDialog = $("#importProcessDialog").dialog({
+		dialogClass: "no-titlebar",
 		autoOpen: false,
 		modal: true
 	});
