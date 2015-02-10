@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF8"/>
 		<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
 		<script type="text/javascript" src="js/jquery-ui.js"></script>
 	</head>
 	<body>
+		<div id="">
+			<img src="../img/assetone_logo_small.png" />
+			<div id="">
+				<h1>Übersicht</h1>
+			</div>
+		</div>
 		<?php
 			if(isset($_GET["action"]))
 			{
