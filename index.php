@@ -14,7 +14,12 @@
 						include ("view/setup.html");
 						break;
 					default:
+						include ("view/main.html");
 				}
+			}
+			else
+			{
+				include ("view/main.html");
 			}
 		?>
 	</body>
