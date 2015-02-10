@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
+<<<<<<< HEAD
 		<meta charset="UTF8"/>
+=======
+		<link rel="stylesheet" type="text/css" href="css/global.css"/>
+>>>>>>> origin/development
 		<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
 		<script type="text/javascript" src="js/jquery-ui.js"></script>
 	</head>
