@@ -1,6 +1,10 @@
 body
 {
+	margin: 0;
+	padding: 3.5em 0 0 15em;
+	background: #edeef5;
 	font-family: Arial, sans-serif;
+	font-size: 1em;
 }
 
 .ui-dialog
@@ -22,8 +26,8 @@ body
 .ui-widget-overlay
 {
     position: fixed;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
 	background: gray;
@@ -35,7 +39,101 @@ body
     background: auto;
 }
 
-.ui-button-blue
+#titlebar
 {
+	background: white;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	height: 3.2em;
+}
 
+#titlebar > div
+{
+	text-align: center;
+	height: inherit;
+}
+
+#logo
+{
+	background-color: #39b9e5;
+	width: 15em;
+	float: left;
+}
+
+#logo img
+{
+	margin: 0.8em;
+}
+
+#headline
+{
+	position: absolute;
+	margin-left: 50%;
+	margin-right: 50%;
+}
+
+#headline h1
+{
+	font-weight: normal;
+	font-size: 1.6em;
+    line-height: 0.7em;
+}
+
+#account
+{
+	width: 15em;
+	float: right;
+}
+
+#sidebar
+{
+	position: fixed;
+	left: 0;
+	height: 100%;
+	top: 3.2em;
+	width: 15em;
+	background-color: #323236;
+}
+
+#sidebar ul
+{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	list-style: none;
+}
+
+#sidebar li
+{
+	border-bottom: 1px solid #3d3d42;
+}
+
+#sidebar li a
+{
+	color: #ffffff;
+	text-decoration: none;
+	display: block;
+	padding: 18px 0 18px 25px;
+	outline: none;
+	transition: all 0.2s ease;
+}
+#sidebar li a.active, #sidebar li a:hover, #sidebar li a:focus
+{
+	background: #2c2c30;
+	color: #39b9e5;
+	display: block;
+	transition: all 0.2s ease;
+}
+
+.contentbox
+{
+	margin: 1em;
+	padding: 0.8em;
+	background: white;
+	box-shadow: 1px 2px 3px gray;
+	border-radius: 4px;
+	float: left;
 }
