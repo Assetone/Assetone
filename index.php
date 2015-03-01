@@ -22,7 +22,7 @@
 		<div id="sidebar">
 			<ul>
 				<li>
-					<a>
+					<a href="?action=">
 					&Uuml;bersicht
 					</a>
 				</li>
@@ -32,7 +32,7 @@
 					</a>
 				</li>
 				<li>
-					<a>
+					<a href="?action=components">
 					Komponenten
 					</a>
 				</li>
@@ -54,6 +54,9 @@
 			{
 				switch($_GET["action"])
 				{
+					case "components":
+						include ("view/components.html");
+						break;
 					case "setup":
 						include ("view/setup.html");
 						break;
