@@ -9,7 +9,13 @@ if(isset($_GET["show"]))
 {
 	$sqlManager = initializeSQLManager($settingsManager);
 	
-	echo json_encode(mysqli_fetch_assoc($sqlManager->query("SELECT * FROM components;")));
+	$queryResult = $sqlManager->query("SELECT * FROM components;");
+	$resultTable = [];
+	
+	while ($row = mysqli_fetch_assoc($queryResult))
+		$resultTable[] = $row;
+	
+	echo json_encode($resultTable);
 }
 
 if (isset($_GET["new"]))
