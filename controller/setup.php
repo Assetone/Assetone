@@ -3,6 +3,7 @@
 // Datum: 29.01.2015
 
 include ("../include/SQLManager.php");
+include ("../include/SettingsManager.php");
 
 if (isset($_GET["import"]))
 {
@@ -21,5 +22,9 @@ if (isset($_GET["import"]))
 	// Import
 	if ($sqlManager->query($databaseSetupSQL, true))
 		echo "successfull";
+	
+	// Save DB-User
+	if(isset($_POST["saveasdefaultuser"]))
+		$settingsManager->Set("dbConfig", ["username" => $_POST["username"], "userpassword" => $_POST["userpassword"]]);
 }
 ?>
