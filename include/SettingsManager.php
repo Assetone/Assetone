@@ -49,8 +49,6 @@ class SettingsManager
 		}
 		
 		$this->settings = parse_ini_file($this->standardSettingsFile);
-		
-		var_dump($this->settings);
 	}
 	
 	private function saveSettings()
@@ -65,14 +63,16 @@ class SettingsManager
 	{
 		if (is_array($setting))
 		{
+			$isInitailRound = $settingKey == null;
+			
 			foreach($setting as $key => &$value)
 			{
-				if($settingKey == null)
+				if (!$isInitailRound)
 				{
 					if (is_int($key))
 						$key = $settingKey."[]";
 					else
-						$key = $settingKey."[\"".$key."\"]";
+						$key = $settingKey."[$key]";
 				}
 				
 				$this->writeIniFile($value, $fileHandle, $key);
@@ -80,7 +80,7 @@ class SettingsManager
 		}
 		else
 		{
-			fwrite($fileHandle, "$settingKey = $setting;");
+			fwrite($fileHandle, "$settingKey = $setting;\n");
 		}
 	}
 	
