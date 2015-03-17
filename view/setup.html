@@ -12,45 +12,45 @@
 		<input type="submit" />
 		<div id="importProcessDialog"></div>
 	</form>
+	<script type="text/javascript">
+		var importProcessDialog;
+		
+		$("#userinformation").submit(function(event){
+			event.preventDefault();
+			
+			importProcessDialog.dialog("open");
+			$("#importProcessDialog").html("Bestand wird eingespielt!");
+			
+			var posting = $.post("controller/setup.php?import", {
+				username: $("#username").val(), 
+				userpassword: $("#userpassword").val(), 
+				saveasdefaultuser: $("#saveasdefaultuser").val()});
+			
+			posting.done(function(data){
+				if(data == "successfull"){
+					$("#importProcessDialog").html("Einspielen erfolgreich!");
+					importProcessDialog.dialog("option", "buttons", [{
+						text: "Fertig",
+						click: function() {
+							window.location.search = "";
+						}
+					}]);
+				}else{
+					$("#importProcessDialog").html("Einspielen fehlgeschlagen!");
+					importProcessDialog.dialog("option", "buttons", [{
+						text: "Fertig",
+						click: function() {
+							$(this).dialog("close");
+						}
+					}]);
+				}
+			})
+		});
+		
+		importProcessDialog = $("#importProcessDialog").dialog({
+			dialogClass: "no-titlebar",
+			autoOpen: false,
+			modal: true
+		});
+	</script>
 </div>
-<script type="text/javascript">
-	var importProcessDialog;
-	
-	$("#userinformation").submit(function(event){
-		event.preventDefault();
-		
-		importProcessDialog.dialog("open");
-		$("#importProcessDialog").html("Bestand wird eingespielt!");
-		
-		var posting = $.post("controller/setup.php?import", {
-			username: $("#username").val(), 
-			userpassword: $("#userpassword").val(), 
-			saveasdefaultuser: $("#saveasdefaultuser").val()});
-		
-		posting.done(function(data){
-			if(data == "successfull"){
-				$("#importProcessDialog").html("Einspielen erfolgreich!");
-				importProcessDialog.dialog("option", "buttons", [{
-					text: "Fertig",
-					click: function() {
-						window.location.search = "";
-					}
-				}]);
-			}else{
-				$("#importProcessDialog").html("Einspielen fehlgeschlagen!");
-				importProcessDialog.dialog("option", "buttons", [{
-					text: "Fertig",
-					click: function() {
-						$(this).dialog("close");
-					}
-				}]);
-			}
-		})
-	});
-	
-	importProcessDialog = $("#importProcessDialog").dialog({
-		dialogClass: "no-titlebar",
-		autoOpen: false,
-		modal: true
-	});
-</script>
