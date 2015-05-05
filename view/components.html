@@ -1,8 +1,18 @@
 <div class="contentbox">
-	Komponente hinzuf&uuml;gen
+	<h2>Komponente hinzuf&uuml;gen</h2>
+	<form id="userinformation" method="POST">
+		<label for="componentname">Komponentenname:</label>
+		<input id="name" type="textbox" required />
+		<br>
+		<label for="componenttype">Komponententyp:</label>
+		<select id="componenttype" type="combobox" required>
+		</select>
+		<br>
+		<input type="submit" />
+	</form>
 </div>
 <div class="contentbox">
-	Komponenten&uuml;bersicht
+	<h2>Komponenten&uuml;bersicht</h2>
 	<table id="componentsTable">
 	</table>
 	<script type="text/javascript">
