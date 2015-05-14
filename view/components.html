@@ -37,9 +37,9 @@
 </div>
 <div class="contentbox">
 	<h2>Komponenten&uuml;bersicht</h2>
-	<table id="componentsTable">
-	</table>
+	<table id="componentsTable"></table>
 	<script type="text/javascript">
+		// Get components
 		$.ajax({
 			url: "controller/components.php?show",
 		}).done(function(jsonString) {
