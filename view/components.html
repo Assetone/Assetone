@@ -1,11 +1,45 @@
 <div class="contentbox">
-	Komponente hinzuf&uuml;gen
+	<h2>Komponente hinzuf&uuml;gen</h2>
+	<form id="newcomponent" method="POST">
+		<label for="componentname">Komponentenname:</label>
+		<input id="componentname" type="textbox" size="30" required />
+		<br>
+		<label for="componenttype">Komponententyp:</label>
+		<select id="componenttype" type="combobox" required></select>
+		<br>
+		<input type="submit" />
+	</form>
+	<script>
+		// Get componenttypes
+		$.ajax({
+			url: "controller/components.php?componenttypes",
+		}).done(function(jsonString) {
+			var jsonData = JSON.parse(jsonString);
+			
+			var selectContent = "";
+			for (var row in jsonData)
+			{
+				selectContent += "<option value='" + jsonData[row].ID + "'>" + jsonData[row].name + "</option>";
+			}
+			
+			$("#componenttype").html(selectContent);
+		});
+	
+		// Create new component
+		$("#newcomponent").submit(function(event){
+			event.preventDefault();
+			
+			$.post("controller/components.php?new", {
+				componentname: $("#componentname").val(), 
+				componenttype: $("#componenttype").val()});
+		});
+	</script>
 </div>
 <div class="contentbox">
-	Komponenten&uuml;bersicht
-	<table id="componentsTable">
-	</table>
+	<h2>Komponenten&uuml;bersicht</h2>
+	<table id="componentsTable"></table>
 	<script type="text/javascript">
+		// Get components
 		$.ajax({
 			url: "controller/components.php?show",
 		}).done(function(jsonString) {
