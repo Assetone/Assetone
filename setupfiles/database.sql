@@ -22,6 +22,12 @@ CREATE TABLE IF NOT EXISTS `componenttypes` (
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE IF NOT EXISTS `rooms` (
+  `ID` int(11) NOT NULL,
+  `name` varchar(25) NOT NULL,
+  `description` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 ALTER TABLE `componentrelations`
   ADD PRIMARY KEY (`ID`), ADD UNIQUE KEY `cIDbasis_builtin` (`cIDbasis`,`cIDbuiltin`), ADD KEY `cIDbuiltin` (`cIDbuiltin`);
@@ -32,12 +38,17 @@ ALTER TABLE `components`
 ALTER TABLE `componenttypes`
   ADD PRIMARY KEY (`ID`);
 
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`ID`), ADD UNIQUE KEY `name` (`name`);
+
 
 ALTER TABLE `componentrelations`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `components`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `componenttypes`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `rooms`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `componentrelations`
