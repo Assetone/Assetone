@@ -20,6 +20,21 @@ if(isset($_GET["show"]))
 	echo json_encode($resultTable);
 }
 
+if (isset($_GET["new"]))
+{
+	// Are all arguments given
+	if (!isset($_POST["roomname"]) || !isset($_POST["roomdescription"]))
+		return;
+	
+	// Open database connection
+	$sqlManager = initializeSQLManager($settingsManager);
+	
+	// Insert new room
+	$queryResult = $sqlManager->query("INSERT INTO rooms (name, description) VALUES ('".
+		$sqlManager->prepareValue($_POST["roomname"])	."', '".
+		$sqlManager->prepareValue($_POST["roomdescription"]) ."');");
+}
+
 function initializeSQLManager($settingsManager)
 {
 	$dbConfig = $settingsManager->Get("dbConfig");

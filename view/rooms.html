@@ -1,5 +1,24 @@
 <div class="contentbox">
 	<h2>Raum hinzuf&uuml;gen</h2>
+	<form id="newroom" method="POST">
+		<label for="roomname">Name:</label>
+		<input id="roomname" type="textbox" size="20" required />
+		<br>
+		<label for="roomdescription">Bezeichnung:</label>
+		<input id="roomdescription" type="textbox" size="30" required />
+		<br>
+		<input type="submit" />
+	</form>
+	<script>
+		// Create new room
+		$("#newroom").submit(function(event){
+			event.preventDefault();
+			
+			$.post("controller/rooms.php?new", {
+				roomname: $("#roomname").val(), 
+				roomdescription: $("#roomdescription").val()});
+		});
+	</script>
 </div>
 <div class="contentbox">
 	<h2>Raum&uuml;bersicht</h2>
