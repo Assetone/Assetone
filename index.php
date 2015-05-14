@@ -27,7 +27,7 @@
 					</a>
 				</li>
 				<li>
-					<a>
+					<a href="?action=rooms">
 					R&auml;ume
 					</a>
 				</li>
@@ -56,6 +56,9 @@
 				{
 					case "components":
 						include ("view/components.html");
+						break;
+					case "rooms":
+						include ("view/rooms.html");
 						break;
 					case "setup":
 						include ("view/setup.html");
