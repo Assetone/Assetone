@@ -7,6 +7,9 @@
 		<label for="componenttype">Komponententyp:</label>
 		<select id="componenttype" type="combobox" required></select>
 		<br>
+		<label for="room">Raum:</label>
+		<select id="room" type="combobox" required></select>
+		<br>
 		<input type="submit" />
 	</form>
 	<script>
@@ -24,6 +27,21 @@
 			
 			$("#componenttype").html(selectContent);
 		});
+		
+		// Get rooms
+		$.ajax({
+			url: "controller/components.php?rooms",
+		}).done(function(jsonString) {
+			var jsonData = JSON.parse(jsonString);
+			
+			var selectContent = "";
+			for (var row in jsonData)
+			{
+				selectContent += "<option value='" + jsonData[row].ID + "'>" + jsonData[row].room + "</option>";
+			}
+			
+			$("#room").html(selectContent);
+		});
 	
 		// Create new component
 		$("#newcomponent").submit(function(event){
@@ -31,7 +49,8 @@
 			
 			$.post("controller/components.php?new", {
 				componentname: $("#componentname").val(), 
-				componenttype: $("#componenttype").val()});
+				componenttype: $("#componenttype").val(),
+				room: $("#room").val()});
 		});
 	</script>
 </div>

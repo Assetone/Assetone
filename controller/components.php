@@ -23,16 +23,17 @@ if(isset($_GET["show"]))
 if (isset($_GET["new"]))
 {
 	// Are all arguments given
-	if (!isset($_POST["componentname"]) || !isset($_POST["componenttype"]))
+	if (!isset($_POST["componentname"]) || !isset($_POST["componenttype"]) || !isset($_POST["room"]))
 		return;
 	
 	// Open database connection
 	$sqlManager = initializeSQLManager($settingsManager);
 	
 	// Insert new component
-	$queryResult = $sqlManager->query("INSERT INTO components (name, ctID) VALUES ('".
-		$sqlManager->prepareValue($_POST["componentname"])	."', ".
-		$sqlManager->prepareValue($_POST["componenttype"]) .");");
+	$queryResult = $sqlManager->query("INSERT INTO components (name, ctID, rID) VALUES ('".
+		$sqlManager->prepareValue($_POST["componentname"]) ."', ".
+		$sqlManager->prepareValue($_POST["componenttype"]) .", ".
+		$sqlManager->prepareValue($_POST["room"]) .");");
 }
 
 if (isset($_GET["componenttypes"]))
@@ -42,6 +43,21 @@ if (isset($_GET["componenttypes"]))
 	
 	// Get componenttypes
 	$queryResult = $sqlManager->query("SELECT ID, name FROM componenttypes;");
+	$resultTable = [];
+	
+	while ($row = mysqli_fetch_assoc($queryResult))
+		$resultTable[] = $row;
+	
+	echo json_encode($resultTable);
+}
+
+if (isset($_GET["rooms"]))
+{
+	// Open database connection
+	$sqlManager = initializeSQLManager($settingsManager);
+	
+	// Get rooms
+	$queryResult = $sqlManager->query("SELECT ID, CONCAT(name, ', ', description) as room FROM rooms;");
 	$resultTable = [];
 	
 	while ($row = mysqli_fetch_assoc($queryResult))
