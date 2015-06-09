@@ -37,12 +37,7 @@
 					</a>
 				</li>
 				<li>
-					<a>
-					Lieferanten
-					</a>
-				</li>
-				<li>
-					<a>
+					<a href="?action=settings">
 					Einstellungen
 					</a>
 				</li>
@@ -59,6 +54,9 @@
 						break;
 					case "rooms":
 						include ("view/rooms.html");
+						break;
+					case "settings":
+						include ("view/settings.html");
 						break;
 					case "setup":
 						include ("view/setup.html");
