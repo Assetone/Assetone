@@ -3,18 +3,30 @@
 // Datum: 18.07.2015
 
 include ("../include/Controller.php");
+include ("../include/SQLManager.php");
+include ("../include/SettingsManager.php");
 
 class IndexController extends Controller
 {
 	public function login()
 	{
-		$username = $_POST["username"];
-		$userpassword = $_POST["userpassword"];
+		// Open database connection
+		$sqlManager = initializeSQLManager(SettingsManager::getInstance());
 		
-		$_SESSION["currentUser"]["logedin"] = true;
+		// Get user
+		$queryResult = $sqlManager->query("SELECT u.ID, ug.name AS userrole FROM user AS u ".
+			"JOIN usergroup AS ug ON ug.ID = u.ugID ".
+			"WHERE ".
+			"u.name ='".$sqlManager->prepareValue($_POST["username"])."' AND ".
+			"u.password ='".$sqlManager->prepareValue(hash("SHA512", $_POST["userpassword"]))."';");
 		
-		$_SESSION["currentUser"]["name"] = $username;
-		$_SESSION["currentUser"]["role"] = "Systembetreuer";
+		if ($row = mysqli_fetch_assoc($queryResult))
+		{
+			$_SESSION["currentUser"]["logedin"] = true;
+			
+			$_SESSION["currentUser"]["name"] = $_POST["username"];
+			$_SESSION["currentUser"]["role"] = $row["userrole"];
+		}
 	}
 	
 	public function logout()
@@ -29,6 +41,12 @@ class IndexController extends Controller
 		if (isset($_SESSION["currentUser"]))
 			return $_SESSION["currentUser"];
 	}
+}
+
+function initializeSQLManager($settingsManager)
+{
+	$dbConfig = $settingsManager->Get("dbConfig");
+	return new SQLManager($dbConfig["username"], $dbConfig["userpassword"], "assetone");
 }
 
 new IndexController();
