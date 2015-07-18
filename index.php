@@ -29,9 +29,9 @@
 					<div id="userlogin">
 						<form id="loginform">
 							<label>Benutzername:</label><br>
-							<input id="username" type="text" /><br>
+							<input id="username" type="text" required /><br>
 							<label>Passwort:</label><br>
-							<input id="userpassword" type="password" /><br>
+							<input id="userpassword" type="password" required /><br>
 							<input type="submit" value="Anmelden" />
 						</form>
 					</div>
