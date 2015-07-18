@@ -6,6 +6,8 @@ class Controller
 {
 	public function __construct()
 	{
+		session_start();
+		
 		$splitterPosition = strpos($_SERVER["QUERY_STRING"], '&');
 		
 		if ($splitterPosition)
@@ -13,7 +15,7 @@ class Controller
 		else
 			$methodName = substr($_SERVER["QUERY_STRING"], 0);
 		
-		$this->$methodName();
+		echo json_encode($this->$methodName());
 	}
 }
 ?>

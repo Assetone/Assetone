@@ -47,16 +47,17 @@ body
 	left: 0;
 	position: fixed;
 	height: 3.2em;
+	box-shadow: 1px 2px 3px gray;
 }
 
 #titlebar > div
 {
-	text-align: center;
 	height: inherit;
 }
 
 #logo
 {
+	text-align: center;
 	background-color: #39b9e5;
 	width: 15em;
 	float: left;
@@ -85,6 +86,39 @@ body
 {
 	width: 15em;
 	float: right;
+	list-style: none;
+}
+
+#accountname
+{
+	margin: 0.5em 0 0 0;
+}
+
+#accountrole
+{
+	font-size: 0.8em;
+	margin: 0;
+}
+
+#accountpic
+{
+	margin: 0.8em;
+	float: left;
+}
+
+#useractions
+{
+	position: absolute;
+	width: 15em;
+	background-color: white;
+	top: 3.2em;
+	border-radius: 0 0 4px 4px;
+	box-shadow: 1px 4px 3px -2px gray;
+}
+
+#useractions > div
+{
+	margin: 0 0.5em 0.5em 0.5em;
 }
 
 #sidebar

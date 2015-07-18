@@ -15,7 +15,92 @@
 				<h1>Übersicht</h1>
 			</div>
 			<div id="account">
-				User
+				<img id="accountpic" src="img/user.png"></img>
+				<div id="accountinfo">
+					<p id="accountname">Anmelden</p>
+					<p id="accountrole"></p>
+				</div>
+				<div id="useractions" hidden>
+					<div id="userlogout" hidden>
+						<form id="logoutform">
+							<input type="submit" value="Abmelden" />
+						</form>
+					</div>
+					<div id="userlogin">
+						<form id="loginform">
+							<label>Benutzername:</label><br>
+							<input id="username" type="text" /><br>
+							<label>Passwort:</label><br>
+							<input id="userpassword" type="password" /><br>
+							<input type="submit" value="Anmelden" />
+						</form>
+					</div>
+				</div>
+				<script type="text/javascript">					
+					function getCurrentUser()
+					{				
+						$.ajax({
+							url: "controller/index.php?getCurrentUser",
+						}).done(function(jsonString) {
+							var jsonData = JSON.parse(jsonString);
+							
+							if (jsonData == null)
+							{
+								$("#userlogin")[0].hidden = false;
+								$("#userlogout")[0].hidden = true;
+								
+								$("#accountname").html("Anmelden");
+								$("#accountrole").html("");
+							}
+							else
+							{
+								if (jsonData.logedin == true)
+								{
+									$("#userlogin")[0].hidden = true;
+									$("#userlogout")[0].hidden = false;
+									
+									$("#accountname").html(jsonData.name);
+									$("#accountrole").html(jsonData.role);
+								}
+								else
+								{
+									$("#userlogin")[0].hidden = false;
+									$("#userlogout")[0].hidden = true;
+									
+									$("#accountname").html("Anmelden");
+									$("#accountrole").html("");
+								}
+							}
+						});
+					}
+					
+					getCurrentUser();
+					
+					$("#loginform").submit(function(event){
+						event.preventDefault();
+						
+						$.post("controller/index.php?login", {
+							username: $("#username").val(), 
+							userpassword: $("#userpassword").val()}).done(getCurrentUser);
+							
+						$("#username").val("");
+						$("#userpassword").val("");
+					});
+					
+					$("#logoutform").submit(function(event){
+						event.preventDefault();
+						
+						$.post("controller/index.php?logout").done(getCurrentUser);
+					});
+					
+					$("#account").click(function( event ) {
+					  $("#useractions").fadeIn();
+					});
+					
+					$("#account").mouseleave(function( event ) {
+					  $("#useractions").fadeOut();
+					});
+				</script>
 			</div>
 		</div>
 		
