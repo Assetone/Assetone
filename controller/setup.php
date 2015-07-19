@@ -8,11 +8,11 @@ include ("../include/SettingsManager.php");
 if (isset($_GET["import"]))
 {
 	// Are all arguments given
-	if (!isset($_POST["username"]) || !isset($_POST["userpassword"]))
+	if (!isset($_POST["dbusername"]) || !isset($_POST["dbuserpassword"]))
 		return;
 	
 	// Open database connection
-	$sqlManager = new SQLManager($_POST["username"], $_POST["userpassword"]);
+	$sqlManager = new SQLManager($_POST["dbusername"], $_POST["dbuserpassword"]);
 	
 	// Read database setup file
 	$databaseSetupFile = fopen("../setupfiles/database.sql", "r");
@@ -24,7 +24,7 @@ if (isset($_GET["import"]))
 		echo "successfull";
 	
 	// Save DB-User
-	if(isset($_POST["saveasdefaultuser"]))
-		$settingsManager->Set("dbConfig", ["username" => $_POST["username"], "userpassword" => $_POST["userpassword"]]);
+	if(isset($_POST["saveasdefaultdbuser"]))
+		$settingsManager->Set("dbConfig", ["username" => $_POST["dbusername"], "userpassword" => $_POST["dbuserpassword"]]);
 }
 ?>

@@ -12,7 +12,7 @@
 				<img src="img/assetone_logo_small.png" />
 			</div>
 			<div id="headline">
-				<h1>Übersicht</h1>
+				<h1>&Uumlbersicht</h1>
 			</div>
 			<div id="account">
 				<img id="accountpic" src="img/user.png"></img>

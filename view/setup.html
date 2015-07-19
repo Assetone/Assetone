@@ -1,13 +1,13 @@
 <div class="contentbox">
-	<form id="userinformation" method="POST">
-		<label for="username">Username:</label>
-		<input id="username" type="textbox" required/>
+	<form id="dbuserinformation" method="POST">
+		<label for="dbusername">Username:</label>
+		<input id="dbusername" type="textbox" required/>
 		<br>
-		<label for="userpassword">Userpassword:</label>
-		<input id="userpassword" type="password" />
+		<label for="dbuserpassword">Userpassword:</label>
+		<input id="dbuserpassword" type="password" />
 		<br>
-		<label for="saveasdefaultuser">Als Standard-Benutzer speichern</label>
-		<input id="saveasdefaultuser" type="checkbox" />
+		<label for="saveasdefaultdbuser">Als Standard-Benutzer speichern</label>
+		<input id="saveasdefaultdbuser" type="checkbox" />
 		<br>
 		<input type="submit" />
 		<div id="importProcessDialog"></div>
@@ -15,16 +15,16 @@
 	<script type="text/javascript">
 		var importProcessDialog;
 		
-		$("#userinformation").submit(function(event){
+		$("#dbuserinformation").submit(function(event){
 			event.preventDefault();
 			
 			importProcessDialog.dialog("open");
 			$("#importProcessDialog").html("Bestand wird eingespielt!");
 			
 			var posting = $.post("controller/setup.php?import", {
-				username: $("#username").val(), 
-				userpassword: $("#userpassword").val(), 
-				saveasdefaultuser: $("#saveasdefaultuser").val()});
+				dbusername: $("#dbusername").val(), 
+				dbuserpassword: $("#dbuserpassword").val(), 
+				saveasdefaultdbuser: $("#saveasdefaultdbuser").val()});
 			
 			posting.done(function(data){
 				if(data == "successfull"){
