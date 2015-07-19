@@ -28,10 +28,10 @@
 					</div>
 					<div id="userlogin">
 						<form id="loginform">
-							<label>Benutzername:</label><br>
-							<input id="username" type="text" required /><br>
-							<label>Passwort:</label><br>
-							<input id="userpassword" type="password" required /><br>
+							<label for="loginusername">Benutzername:</label><br>
+							<input id="loginusername" type="text" required /><br>
+							<label for="loginuserpassword">Passwort:</label><br>
+							<input id="loginuserpassword" type="password" required /><br>
 							<input type="submit" value="Anmelden" />
 						</form>
 					</div>
@@ -80,11 +80,11 @@
 						event.preventDefault();
 						
 						$.post("controller/index.php?login", {
-							username: $("#username").val(), 
-							userpassword: $("#userpassword").val()}).done(getCurrentUser);
+							username: $("#loginusername").val(), 
+							userpassword: $("#loginuserpassword").val()}).done(getCurrentUser);
 							
-						$("#username").val("");
-						$("#userpassword").val("");
+						$("#loginusername").val("");
+						$("#loginuserpassword").val("");
 					});
 					
 					$("#logoutform").submit(function(event){
