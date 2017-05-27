@@ -1,4 +1,4 @@
-<div class="contentbox">
+<div class="contentbox" id="dbimport">
 	<h2>Datenbank einspielen</h2>
 	<form id="dbuserinformation" method="POST">
 		<label for="dbusername">Username:</label>
@@ -11,8 +11,8 @@
 		<input id="saveasdefaultdbuser" type="checkbox" />
 		<br>
 		<input type="submit" />
-		<div id="importProcessDialog"></div>
 	</form>
+	<div id="importProcessDialog"></div>
 	<script type="text/javascript">
 		var importProcessDialog;
 		
@@ -22,7 +22,7 @@
 			importProcessDialog.dialog("open");
 			$("#importProcessDialog").html("Bestand wird eingespielt!");
 			
-			var posting = $.post("controller/setup.php?import", {
+			var posting = $.post("controller/setup.php?importdb", {
 				dbusername: $("#dbusername").val(), 
 				dbuserpassword: $("#dbuserpassword").val(), 
 				saveasdefaultdbuser: $("#saveasdefaultdbuser").val()});
@@ -31,21 +31,23 @@
 				if(data == "successfull"){
 					$("#importProcessDialog").html("Einspielen erfolgreich!");
 					importProcessDialog.dialog("option", "buttons", [{
-						text: "Fertig",
+						text: "Weiter",
 						click: function() {
-							window.location.search = "";
+							$("#dbimport").hide();
+							$("#defaultuser").show();
+							$(this).dialog("close");
 						}
 					}]);
 				}else{
 					$("#importProcessDialog").html("Einspielen fehlgeschlagen!");
 					importProcessDialog.dialog("option", "buttons", [{
-						text: "Fertig",
+						text: "Wiederholen",
 						click: function() {
 							$(this).dialog("close");
 						}
 					}]);
 				}
-			})
+			});
 		});
 		
 		importProcessDialog = $("#importProcessDialog").dialog({
@@ -56,9 +58,67 @@
 	</script>
 </div>
 
-<div class="contentbox">
+<div class="contentbox" id="defaultuser" hidden>
 	<h2>Benutzer festlegen</h2>
-	<form>
-		
+	<form id="defaultuserinformation">
+		<h3>Systemadminstrator festlegen</h3>
+		<label>Benutzername:</label>
+		<input id="defaultusername" type="textbox" required />
+		<br>
+		<label>Passwort:</label>
+		<input id="defaultuserpassword" type="password" required />
+		<br>
+		<label>Passwort wiederholen:</label>
+		<input id="defaultuserpasswordwdh" type="password" required />
+		<br>
+		<label>Administratorengruppenname:</label>
+		<input id="administratorsusergroup" required />
+		<br>
+		<input type="submit" />
 	</form>
+	<div id="defaultuserDialog"></div>
+	<script type="text/javascript">
+		var defaultuserDialog;
+		
+		$("#defaultuserinformation").submit(function(event){
+			event.preventDefault();
+			
+			defaultuserDialog.dialog("open");
+			$("#defaultuserDialog").html("Benutzer wird erstellt!");
+			
+			if ($("#defaultuserpassword").val() === $("#defaultuserpasswordwdh").val())
+			{
+				var posting = $.post("controller/setup.php?createDefaultUser", {
+					defaultusername: $("#defaultusername").val(), 
+					defaultuserpassword: $("#defaultuserpassword").val(), 
+					administratorsusergroup: $("#administratorsusergroup").val()});
+				
+				posting.done(function(data){
+					if(data == "successfull"){
+						$("#defaultuserDialog").html("Einspielen erfolgreich!");
+						defaultuserDialog.dialog("option", "buttons", [{
+							text: "Fertig",
+							click: function() {
+								window.location.search = "";
+							}
+						}]);
+					}else{
+						$("#defaultuserDialog").html("Einspielen fehlgeschlagen!");
+						defaultuserDialog.dialog("option", "buttons", [{
+							text: "Fertig",
+							click: function() {
+								$(this).dialog("close");
+							}
+						}]);
+					}
+				});
+			}
+		});
+		
+		defaultuserDialog = $("#defaultuserDialog").dialog({
+			dialogClass: "no-titlebar",
+			autoOpen: false,
+			modal: true
+		});
+	</script>
 </div>
